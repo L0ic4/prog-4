@@ -1,4 +1,11 @@
 package com.example.prog4.controller;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
+@Controller
 public class EmployeesController {
-}
+    @GetMapping (value = "/emloyee")
+        public String index(){
+            return "index";
+        }
+    }
