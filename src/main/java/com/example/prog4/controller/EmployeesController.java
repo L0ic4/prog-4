@@ -1,11 +1,22 @@
 package com.example.prog4.controller;
+import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.service.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
+@AllArgsConstructor
+@RequestMapping("/employees")
 public class EmployeesController {
-    @GetMapping (value = "/emloyee")
-        public String index(){
-            return "index";
-        }
+    private final EmployeeService employeeService;
+    @GetMapping
+    public String getAllEmployees(Model model) {
+        Iterable<EmployeeEntity> employees = employeeService.findAll();
+        model.addAttribute("employees", employees);
+        return "employee-list";
+    }
     }

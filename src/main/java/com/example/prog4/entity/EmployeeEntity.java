@@ -9,9 +9,6 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "employees")
 public class EmployeeEntity {
     @Id
