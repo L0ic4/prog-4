@@ -29,7 +29,7 @@ public class EmployeesController {
         return "employee-add";
     }
     @PostMapping("/save")
-    public String saveEmployee(EmployeeEntity employeeEntity, HttpSession session) {
+    public String saveEmployee( EmployeeEntity employeeEntity, HttpSession session) {
         session.setAttribute("newEmployee", employeeEntity);
         employeeService.save(employeeEntity);
         return "redirect:/employees";
