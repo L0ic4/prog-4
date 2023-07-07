@@ -1,4 +1,5 @@
 package com.example.prog4.controller;
+
 import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.service.EmployeeService;
 import jakarta.servlet.http.HttpSession;
@@ -28,8 +29,9 @@ public class EmployeesController {
     public String showAddEmployeeForm(EmployeeEntity employeeEntity) {
         return "employee-add";
     }
+
     @PostMapping("/save")
-    public String saveEmployee( EmployeeEntity employeeEntity, HttpSession session) {
+    public String saveEmployee(EmployeeEntity employeeEntity, HttpSession session) {
         session.setAttribute("newEmployee", employeeEntity);
         employeeService.save(employeeEntity);
         return "redirect:/employees";

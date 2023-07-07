@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/styles/style.css}" />
+    <link rel="stylesheet" th:href="@{/styles/style.css}"/>
 </head>
 <body>
 <div class="login-box">
     <p>Add employee </p>
-    <form th:action="@{/employees/save}" th:object="${employeeEntity}" method="post">
+    <form method="post" th:action="@{/employees/save}" th:object="${employeeEntity}">
         <div class="user-box">
-            <input type="text" id="firstName" th:field="*{firstname}" />
+            <input id="firstName" th:field="*{firstname}" type="text"/>
             <label for="firstName">First Name:</label>
         </div>
         <div class="user-box">
-            <input type="text" id="lastName" th:field="*{lastname}" />
+            <input id="lastName" th:field="*{lastname}" type="text"/>
             <label for="lastName">Name:</label>
         </div>
         <div class="user-box">
-            <input type="date" id="birthDate" th:field="*{birthdate}" />
+            <input id="birthDate" th:field="*{birthdate}" type="date"/>
             <label for="birthDate">Birthdate:</label>
         </div>
         <div>
@@ -26,7 +26,8 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <span></span>Ajouter</button>
+                <span></span>Ajouter
+            </button>
         </div>
     </form>
 </div>
