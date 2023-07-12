@@ -8,7 +8,7 @@
 <body>
 <div class="login-box">
     <p>Add employee </p>
-    <form method="post" th:action="@{/employees/save}" th:object="${employeeEntity}">
+    <form method="post" th:action="@{/employees/save}" th:object="${employee}" enctype="multipart/form-data">
         <div class="user-box">
             <input id="firstName" th:field="*{firstname}" type="text"/>
             <label for="firstName">First Name:</label>
@@ -22,7 +22,7 @@
             <label for="birthDate">Birthdate:</label>
         </div>
         <div>
-            <input type="file" id="imageInput" accept="image/*">
+            <input name="image" type="file" id="imageInput" accept="image/*">
             <div id="imageContainer"></div>
         </div>
         <div>

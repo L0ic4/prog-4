@@ -16,6 +16,7 @@
         <p><strong>Prénom :</strong> <span th:text="${employee.firstname}"></span></p>
         <p><strong>Nom :</strong> <span th:text="${employee.lastname}"></span></p>
         <p><strong>Date de naissance :</strong> <span th:text="${employee.birthdate}"></span></p>
+        <img th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"  alt="mbola tsy mety"/>
     </div>
 </div>
 </body>
