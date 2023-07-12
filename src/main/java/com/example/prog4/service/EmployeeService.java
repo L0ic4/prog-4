@@ -11,6 +11,8 @@ public class EmployeeService {
     private final EmployeeRepository employeeRepository;
 
     public void save(EmployeeEntity employee) {
+        String matricule = generateMatricule();
+        employee.setEmployeeNumber(matricule);
         employeeRepository.save(employee);
     }
 
@@ -28,5 +30,20 @@ public class EmployeeService {
 
     public void update(EmployeeEntity employee) {
         employeeRepository.save(employee);
+    }
+    public String generateMatricule() {
+        EmployeeEntity dernierEmploye = employeeRepository.findFirstByOrderByEmployeeNumberDesc();
+
+        if (dernierEmploye == null) {
+            // Aucun matricule n'a été attribué auparavant, commencer avec EMP001
+            return "EMP001";
+        } else {
+            String dernierMatricule = dernierEmploye.getEmployeeNumber();
+            // Extraire le nombre du dernier matricule et l'incrémenter
+            int dernierNumero = Integer.parseInt(dernierMatricule.substring(3));
+            int nouveauNumero = dernierNumero + 1;
+            // Formater le nouveau matricule avec des zéros de remplissage
+            return String.format("EMP%03d", nouveauNumero);
+        }
     }
 }
