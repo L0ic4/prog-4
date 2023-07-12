@@ -29,4 +29,9 @@ public class EmployeeEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
     private Date birthdate;
+
+    private String employeeNumber;
+
+    @Lob
+    private String imageBase64;
 }
