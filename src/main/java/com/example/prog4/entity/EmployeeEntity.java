@@ -32,6 +32,6 @@ public class EmployeeEntity {
 
     private String employeeNumber;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String imageBase64;
 }
