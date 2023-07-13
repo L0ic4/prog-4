@@ -4,15 +4,22 @@ import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Base64;
 
 @Service
 @AllArgsConstructor
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
 
-    public void save(EmployeeEntity employee) {
+    public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
         String matricule = generateMatricule();
         employee.setEmployeeNumber(matricule);
+        byte[] imageBytes = imageFile.getBytes();
+        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+        employee.setImageBase64(base64Image);
         employeeRepository.save(employee);
     }
 
@@ -32,13 +39,13 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
     public String generateMatricule() {
-        EmployeeEntity dernierEmploye = employeeRepository.findFirstByOrderByEmployeeNumberDesc();
+        EmployeeEntity lastEmployee = employeeRepository.findFirstByOrderByEmployeeNumberDesc();
 
-        if (dernierEmploye == null) {
+        if (lastEmployee == null) {
             // Aucun matricule n'a été attribué auparavant, commencer avec EMP001
             return "EMP001";
         } else {
-            String dernierMatricule = dernierEmploye.getEmployeeNumber();
+            String dernierMatricule = lastEmployee.getEmployeeNumber();
             // Extraire le nombre du dernier matricule et l'incrémenter
             int dernierNumero = Integer.parseInt(dernierMatricule.substring(3));
             int nouveauNumero = dernierNumero + 1;

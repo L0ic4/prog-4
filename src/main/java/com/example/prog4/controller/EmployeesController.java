@@ -39,18 +39,8 @@ public class EmployeesController {
     }
 
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("employee") EmployeeEntity employee,@RequestParam("image") MultipartFile imageFile) {
-        if(!imageFile.isEmpty()){
-            try {
-                byte[] imageBytes = imageFile.getBytes();
-                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-                employee.setImageBase64(base64Image);
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Gérer l'erreur de lecture du fichier
-            }
-        }
-        employeeService.save(employee);
+    public String saveEmployee(@ModelAttribute("employee") EmployeeEntity employee,@RequestParam("image") MultipartFile imageFile) throws IOException {
+        employeeService.save(employee,imageFile);
         return "redirect:/employees";
     }
 }
