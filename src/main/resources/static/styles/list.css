@@ -79,3 +79,8 @@ h1 {
     transition-timing-function: linear;
 }
 
+a {
+    text-decoration: none; /* Supprime la soulignement des liens */
+    color: inherit; /* Utilise la couleur du texte parent */
+    cursor: pointer; /* Affiche un curseur de type pointeur lors du survol */
+}

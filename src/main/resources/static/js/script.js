@@ -21,6 +21,8 @@ imageInput.addEventListener('change', function() {
             // Ajouter la balise <img> au conteneur d'image
             imageContainer.innerHTML = '';
             imageContainer.appendChild(img);
+            img.style.width = '150px';
+            img.style.height = 'auto';
         }
 
         // Lire le fichier en tant que URL de données (data URL)

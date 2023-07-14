@@ -9,7 +9,7 @@
 
 <div class="container">
     <header>
-        <img width="150" height="250" th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"  alt="mbola tsy mety"/>
+        <img width="150" height="250" th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"  alt="mbola tsy mety" />
         <div>
             <h2>Digital Strategist &amp; Marketing</h2>
             <a href="mailto:joemcfadden@email.com">joemcfadden@email.com</a>
@@ -20,8 +20,12 @@
         </div>
     </header>
     <aside>
+        <h1>Firstname : </h1>
         <h1 th:text="${employee.firstname}" ></h1>
+        <h1>Lastname : </h1>
         <h2 th:text="${employee.lastname}"></h2>
+        <h1>Number : </h1>
+        <h1 th:text="${employee.employeeNumber}" ></h1>
         <hr />
         <h3>Education</h3>
         <h4>Bachelor Degree</h4>

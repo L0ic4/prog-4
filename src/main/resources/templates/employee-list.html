@@ -17,12 +17,29 @@
     </thead>
     <tbody>
     <tr th:each="employee : ${employees}">
-        <td th:text="${employee.id}"></td>
-        <td th:text="${employee.firstname}"></td>
-        <td th:text="${employee.lastname}"></td>
-        <td th:text="${employee.birthdate}"></td>
+        <td>
+            <a th:href="@{'/employees/' + ${employee.id}}"> <!-- Remplacez '/employee/' par l'URL de votre page de destination -->
+                <span th:text="${employee.id}"></span>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/employees/' + ${employee.id}}">
+                <span th:text="${employee.firstname}"></span>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/employees/' + ${employee.id}}">
+                <span th:text="${employee.lastname}"></span>
+            </a>
+        </td>
+        <td>
+            <a th:href="@{'/employees/' + ${employee.id}}">
+                <span th:text="${employee.birthdate}"></span>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
+<a th:href="@{'/employees/add'}" > Add </a>
 </body>
 </html>
