@@ -18,7 +18,10 @@ public class CsvFileGenerator {
       CSVWriter csvWriter = new CSVWriter(response.getWriter());
 
       // Écriture de l'en-tête du CSV
-      String[] entetes = {"firstname", "lastname","birthdate","phoneNumbers","workEmail","personalEmail","CIN","address","hireDate","resignationDate","CNAPS","position","children","sex","category","employeeNumber"};
+      String[] entetes =
+          {"firstname", "lastname", "birthdate", "phoneNumbers", "workEmail", "personalEmail",
+              "CIN", "address", "hireDate", "resignationDate", "CNAPS", "position", "children",
+              "sex", "category", "employeeNumber"};
       csvWriter.writeNext(entetes);
 
       // Écriture des données dans le CSV
@@ -29,7 +32,8 @@ public class CsvFileGenerator {
             employee.getAddress(), String.valueOf(employee.getHireDate()),
             String.valueOf(employee.getResignationDate()), employee.getCNAPS(),
             employee.getPosition(),
-            String.valueOf(employee.getChildren()),employee.getSex(), employee.getCategory(),employee.getEmployeeNumber()};
+            String.valueOf(employee.getChildren()), employee.getSex(), employee.getCategory(),
+            employee.getEmployeeNumber()};
         csvWriter.writeNext(ligne);
       }
 

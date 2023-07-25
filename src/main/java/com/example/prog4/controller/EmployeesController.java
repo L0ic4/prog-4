@@ -55,8 +55,8 @@ public class EmployeesController {
     } else {
       employees = employeeService.findAll();
     }
-    if (isDownload){
-      csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees,response);
+    if (isDownload) {
+      csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
     }
     model.addAttribute("employees", employees);
     return "employee-list";
