@@ -3,109 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <link rel="stylesheet" th:href="@{/styles/card.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/card.css}"/>
 </head>
 <body th:if="${employee}">
 
 <div class="container">
     <header>
-        <img width="150" height="250" th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"  alt="mbola tsy mety" />
+        <img alt="mbola tsy mety" height="250" th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"
+             width="150"/>
         <div>
-            <h2>Digital Strategist &amp; Marketing</h2>
-            <a href="mailto:joemcfadden@email.com">joemcfadden@email.com</a>
-            <br />
-            <a href="https://joewebsite.com">joewebsite.com</a>
-            <br />
-            317.123.6543
+            <h2>Loica Consolidated</h2>
+            <a th:text="${employee.workEmail}"></a>
+            <br/>
+            <h3 th:text="${employee.employeeNumber}"></h3>
         </div>
     </header>
     <aside>
-        <h1>Firstname : </h1>
-        <h1 th:text="${employee.firstname}" ></h1>
-        <h1>Lastname : </h1>
-        <h2 th:text="${employee.lastname}"></h2>
-        <h1>Number : </h1>
-        <h1 th:text="${employee.employeeNumber}" ></h1>
-        <hr />
-        <h3>Education</h3>
-        <h4>Bachelor Degree</h4>
-        <p>
-            Name of University
-            <br />
-            2011-2015
-        </p>
-        <h4>Masters Degree</h4>
-        <p>
-            Name of University
-            <br />
-            2015-2017
-        </p>
-        <hr />
-        <h3>Skills</h3>
-        <h4>Item Name Goes Here</h4>
-        <p>
-            Description goes here
-        </p>
-        <h4>Lorem Ipsum</h4>
-        <p>
-            Description goes here
-        </p>
-        <h4>Dolor Set Amit Caslum</h4>
-        <p>
-            Description goes here
-        </p>
-        <a href="https://joewebsite.com">joewebsite<span>.com</span></a>
+        <h2>Firstname : </h2>
+        <h3 th:text="${employee.firstname}"></h3>
+        <h2>Lastname : </h2>
+        <h3 th:text="${employee.lastname}"></h3>
+        <h2>Sex : </h2>
+        <h3 th:text="${employee.sex}"></h3>
+        <h2>Personnal mail : </h2>
+        <h3 th:text="${employee.personalEmail}"></h3>
+        <h2>CIN : </h2>
+        <h3 th:text="${employee.CIN}"></h3>
+        <h2>PHONE : </h2>
+        <h3 th:text="${employee.phoneNumbers}"></h3>
+        <h2>ADDRESS : </h2>
+        <h3 th:text="${employee.address}"></h3>
+        <hr/>
+        <h3>Hire Date</h3>
+        <h4 th:text="${employee.hireDate}"></h4>
+        <h3>Resignation Date</h3>
+        <h4 th:text="${employee.resignationDate}"></h4>
+        <hr/>
+        <h3>CNAPS : </h3>
+        <h4 th:text="${employee.CNAPS}"></h4>
+        <h3>Position : </h3>
+        <h4 th:text="${employee.position}"></h4>
+        <h3>Category : </h3>
+        <h4 th:text="${employee.category}"></h4>
+        <h4>Children : </h4>
+        <p th:text="${employee.children}"></p>
     </aside>
     <!--
     The main element contains the actual content of the resume, so the summary
     and professional experience.
     -->
-<!--    <main>-->
-<!--        <h3>Summary</h3>-->
-<!--        <h4>Corporate Real Estate Executive</h4>-->
-<!--        <p>-->
-<!--            Increasing Bottom-Line Profitability Through Real Estate Strategies-->
-<!--        </p>-->
-<!--        <p>-->
-<!--            Accomplished executive with a proven ability to develop and implement real-estate strategies that support business and financial objectives. Have led key initiatives that reduced operating budget by $32 million and contributed to 550% stock increase. Recognized as an expert in applying financial concepts to asset management decisions.-->
-<!--        </p>-->
-<!--        <h3>Professional Experience</h3>-->
-<!--        <ol>-->
-<!--            <li>-->
-<!--                <h4>Corporate Real Estate Executive</h4>-->
-<!--                <p>-->
-<!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Outcomes:-->
-<!--                <ul>-->
-<!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
-<!--                    <li>Improved demand forecasting that reduced backorders to retail partners by 17%.</li>-->
-<!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
-<!--                </ul>-->
-<!--                </p>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--                <h4>Corporate Real Estate Executive</h4>-->
-<!--                <p>-->
-<!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
-<!--                </p>-->
-<!--                <p>-->
-<!--                    Outcomes:-->
-<!--                <ul>-->
-<!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
-<!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
-<!--                </ul>-->
-<!--                </p>-->
-<!--            </li>-->
-<!--        </ol>-->
-<!--    </main>-->
+    <!--    <main>-->
+    <!--        <h3>Summary</h3>-->
+    <!--        <h4>Corporate Real Estate Executive</h4>-->
+    <!--        <p>-->
+    <!--            Increasing Bottom-Line Profitability Through Real Estate Strategies-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--            Accomplished executive with a proven ability to develop and implement real-estate strategies that support business and financial objectives. Have led key initiatives that reduced operating budget by $32 million and contributed to 550% stock increase. Recognized as an expert in applying financial concepts to asset management decisions.-->
+    <!--        </p>-->
+    <!--        <h3>Professional Experience</h3>-->
+    <!--        <ol>-->
+    <!--            <li>-->
+    <!--                <h4>Corporate Real Estate Executive</h4>-->
+    <!--                <p>-->
+    <!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
+    <!--                </p>-->
+    <!--                <p>-->
+    <!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
+    <!--                </p>-->
+    <!--                <p>-->
+    <!--                    Outcomes:-->
+    <!--                <ul>-->
+    <!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
+    <!--                    <li>Improved demand forecasting that reduced backorders to retail partners by 17%.</li>-->
+    <!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
+    <!--                </ul>-->
+    <!--                </p>-->
+    <!--            </li>-->
+    <!--            <li>-->
+    <!--                <h4>Corporate Real Estate Executive</h4>-->
+    <!--                <p>-->
+    <!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
+    <!--                </p>-->
+    <!--                <p>-->
+    <!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
+    <!--                </p>-->
+    <!--                <p>-->
+    <!--                    Outcomes:-->
+    <!--                <ul>-->
+    <!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
+    <!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
+    <!--                </ul>-->
+    <!--                </p>-->
+    <!--            </li>-->
+    <!--        </ol>-->
+    <!--    </main>-->
 </div>
 </body>
 </html>

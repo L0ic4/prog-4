@@ -18,7 +18,8 @@
     <tbody>
     <tr th:each="employee : ${employees}">
         <td>
-            <a th:href="@{'/employees/' + ${employee.id}}"> <!-- Remplacez '/employee/' par l'URL de votre page de destination -->
+            <a th:href="@{'/employees/' + ${employee.id}}">
+                <!-- Remplacez '/employee/' par l'URL de votre page de destination -->
                 <span th:text="${employee.id}"></span>
             </a>
         </td>
@@ -40,6 +41,6 @@
     </tr>
     </tbody>
 </table>
-<a th:href="@{'/employees/add'}" > Add </a>
+<a th:href="@{'/employees/add'}"> Add </a>
 </body>
 </html>

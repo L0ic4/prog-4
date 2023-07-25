@@ -8,21 +8,97 @@
 <body>
 <div class="login-box">
     <p>Add employee </p>
-    <form method="post" th:action="@{/employees/save}" th:object="${employee}" enctype="multipart/form-data">
+    <form enctype="multipart/form-data" method="post" th:action="@{/employees/save}" th:object="${employee}">
         <div class="user-box">
-            <input id="firstName" th:field="*{firstname}" type="text"/>
+            <input id="firstName" required th:field="*{firstname}" type="text"/>
             <label for="firstName">First Name:</label>
         </div>
         <div class="user-box">
-            <input id="lastName" th:field="*{lastname}" type="text"/>
+            <input id="lastName" required th:field="*{lastname}" type="text"/>
             <label for="lastName">Name:</label>
         </div>
         <div class="user-box">
             <input id="birthDate" th:field="*{birthdate}" type="date"/>
             <label for="birthDate">Birthdate:</label>
         </div>
+        <div class="user-box">
+            <input id="address" th:field="*{address}" type="date"/>
+            <label for="address">Address:</label>
+        </div>
+        <div class="user-box">
+            <input multiple id="phone" name="phone" pattern="^\+?261(32|33|34|38)[0-9]{7}(,\+?261(32|33|34|38)[0-9]{7})*$" required th:field="*{phoneNumbers}" type="tel">
+            <label for="phone">Phone number:</label>
+        </div>
+        <div class="user-box">
+            <input id="workEmail" required th:field="*{workEmail}" type="email">
+            <label for="workEmail">Work Email:</label>
+        </div>
+        <div class="user-box">
+            <input id="personalEmail" required th:field="*{personalEmail}" type="email">
+            <label for="personalEmail">Personal Email:</label>
+        </div>
+        <div class="user-box">
+            <input id="CIN" required th:field="*{CIN}" type="text"/>
+            <label for="CIN">CIN:</label>
+        </div>
+        <div class="user-box">
+            <input id="hireDate" th:field="*{hireDate}" type="date"/>
+            <label for="hireDate">Hire Date:</label>
+        </div>
+        <div class="user-box">
+            <input id="resignationDate" th:field="*{resignationDate}" type="date"/>
+            <label for="resignationDate">Resignation date:</label>
+        </div>
+        <div class="user-box">
+            <input id="CNAPS" required th:field="*{CNAPS}" type="text"/>
+            <label for="CNAPS">CNAPS:</label>
+        </div>
+
+
         <div>
-            <input name="image" type="file" id="imageInput" accept="image/*">
+            <label>POSITION:</label>
+            <select th:field="*{position}">
+                <option th:text="RH" th:value="'RH'"></option>
+                <option th:text="IT" th:value="'IT'"></option>
+            </select>
+        </div>
+        <div>
+            <label>CHILDREN:</label>
+            <select th:field="*{children}">
+                <option th:text="0" th:value="0"></option>
+                <option th:text="1" th:value="1"></option>
+                <option th:text="2" th:value="2"></option>
+                <option th:text="3" th:value="3"></option>
+                <option th:text="4" th:value="4"></option>
+                <option th:text="5" th:value="5"></option>
+                <option th:text="6" th:value="6"></option>
+                <option th:text="7" th:value="7"></option>
+                <option th:text="8" th:value="8"></option>
+                <option th:text="9" th:value="9"></option>
+                <option th:text="10" th:value="10"></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Sex:</label>
+            <select th:field="*{sex}">
+                <option th:text="Male" th:value="Male"></option>
+                <option th:text="Female" th:value="Female"></option>
+            </select>
+        </div>
+
+        <div>
+            <label>Category:</label>
+            <select th:field="*{sex}">
+                <option th:text="M1" th:value="M1"></option>
+                <option th:text="M2" th:value="M2"></option>
+                <option th:text="OS1" th:value="OS1"></option>
+                <option th:text="OS2" th:value="OS2"></option>
+                <option th:text="OS3" th:value="OS3"></option>
+            </select>
+        </div>
+        <div>
+            <input accept="image/*" id="imageInput" name="image" type="file">
             <div id="imageContainer"></div>
         </div>
         <div>
@@ -32,6 +108,6 @@
         </div>
     </form>
 </div>
-<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script th:src="@{/js/script.js}" type="text/javascript"></script>
 </body>
 </html>

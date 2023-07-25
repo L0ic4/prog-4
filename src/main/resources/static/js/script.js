@@ -5,14 +5,14 @@ const imageInput = document.getElementById('imageInput');
 const imageContainer = document.getElementById('imageContainer');
 
 // Écouter l'événement de modification du champ d'entrée
-imageInput.addEventListener('change', function() {
+imageInput.addEventListener('change', function () {
     // Vérifier si un fichier est sélectionné
     if (imageInput.files && imageInput.files[0]) {
         // Créer un objet FileReader
         const reader = new FileReader();
 
         // Lorsque la lecture du fichier est terminée
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             // Créer la balise <img>
             const img = document.createElement('img');
             img.src = e.target.result;
