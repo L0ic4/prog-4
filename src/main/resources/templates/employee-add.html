@@ -26,7 +26,9 @@
             <label for="address">Address:</label>
         </div>
         <div class="user-box">
-            <input multiple id="phone" name="phone" pattern="^\+?261(32|33|34|38)[0-9]{7}(,\+?261(32|33|34|38)[0-9]{7})*$" required th:field="*{phoneNumbers}" type="tel">
+            <input id="phone" multiple name="phone"
+                   pattern="^\+?261(32|33|34|38)[0-9]{7}(,\+?261(32|33|34|38)[0-9]{7})*$" required
+                   th:field="*{phoneNumbers}" type="tel">
             <label for="phone">Phone number:</label>
         </div>
         <div class="user-box">

@@ -1,8 +1,11 @@
 package com.example.prog4.controller;
 
 import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/employees")
 public class EmployeesController {
   private final EmployeeService employeeService;
+  private final CsvFileGenerator csvFileGenerator;
+
 
   @GetMapping
   public String getAllEmployees(@RequestParam(required = false) String firstname,
@@ -28,9 +33,10 @@ public class EmployeesController {
                                 @RequestParam(required = false) String position,
                                 @RequestParam(required = false) String hiredate,
                                 @RequestParam(required = false) String resigndate,
-                                @RequestParam(required = false) String sortField,
-                                @RequestParam(required = false) String sortOrder,
-                                Model model) {
+                                @RequestParam(required = false) boolean isDownload,
+                                @RequestParam(required = false, defaultValue = "asc")
+                                String orderBy,
+                                Model model, HttpServletResponse response) {
 
     Iterable<EmployeeEntity> employees;
 
@@ -40,18 +46,18 @@ public class EmployeesController {
       employees = employeeService.findEmployeesByLastname(lastname);
     } else if (position != null) {
       employees = employeeService.findEmployeesByPosition(position);
-    }
-    else if (hiredate != null) {
-    employees = employeeService.findEmployeesByHireDate(hiredate);
-    }
-    else if (resigndate != null) {
+    } else if (hiredate != null) {
+      employees = employeeService.findEmployeesByHireDate(hiredate);
+    } else if (resigndate != null) {
       employees = employeeService.findEmployeesByResignationDate(resigndate);
-    }else if (sex != null) {
+    } else if (sex != null) {
       employees = employeeService.findEmployeesBySex(sex);
     } else {
       employees = employeeService.findAll();
     }
-
+    if (isDownload){
+      csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees,response);
+    }
     model.addAttribute("employees", employees);
     return "employee-list";
   }
