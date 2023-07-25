@@ -6,16 +6,16 @@
     <link rel="stylesheet" th:href="@{/styles/auth.css}"/>
 </head>
 <body>
-<form class="form">
-    <p>Login</p>
+<form class="form" method="post" th:action="@{/createuser}" th:object="${user}">
+    <p>Sign up</p>
     <div class="group">
-        <input class="main-input" required="true" type="text">
+        <input class="main-input" required="true" type="text" th:field="*{username}">
         <span class="highlight-span"></span>
-        <label class="lebal-email">Email</label>
+        <label class="lebal-email">username</label>
     </div>
     <div class="container-1">
         <div class="group">
-            <input class="main-input" required="true" type="text">
+            <input class="main-input" required="true" type="text" th:field="*{password}">
             <span class="highlight-span"></span>
             <label class="lebal-email">password</label>
         </div>
