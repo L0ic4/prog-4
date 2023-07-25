@@ -22,7 +22,7 @@
             <label for="birthDate">Birthdate:</label>
         </div>
         <div class="user-box">
-            <input id="address" th:field="*{address}" type="date"/>
+            <input id="address" th:field="*{address}" type="text"/>
             <label for="address">Address:</label>
         </div>
         <div class="user-box">
@@ -89,7 +89,7 @@
 
         <div>
             <label>Category:</label>
-            <select th:field="*{sex}">
+            <select th:field="*{category}">
                 <option th:text="M1" th:value="M1"></option>
                 <option th:text="M2" th:value="M2"></option>
                 <option th:text="OS1" th:value="OS1"></option>

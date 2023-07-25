@@ -25,6 +25,9 @@ public class EmployeesController {
   public String getAllEmployees(@RequestParam(required = false) String firstname,
                                 @RequestParam(required = false) String lastname,
                                 @RequestParam(required = false) String sex,
+                                @RequestParam(required = false) String position,
+                                @RequestParam(required = false) String hiredate,
+                                @RequestParam(required = false) String resigndate,
                                 @RequestParam(required = false) String sortField,
                                 @RequestParam(required = false) String sortOrder,
                                 Model model) {
@@ -35,7 +38,15 @@ public class EmployeesController {
       employees = employeeService.findEmployeesByFirstname(firstname);
     } else if (lastname != null) {
       employees = employeeService.findEmployeesByLastname(lastname);
-    } else if (sex != null) {
+    } else if (position != null) {
+      employees = employeeService.findEmployeesByPosition(position);
+    }
+    else if (hiredate != null) {
+    employees = employeeService.findEmployeesByHireDate(hiredate);
+    }
+    else if (resigndate != null) {
+      employees = employeeService.findEmployeesByResignationDate(resigndate);
+    }else if (sex != null) {
       employees = employeeService.findEmployeesBySex(sex);
     } else {
       employees = employeeService.findAll();

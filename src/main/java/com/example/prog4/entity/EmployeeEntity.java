@@ -38,9 +38,6 @@ public class EmployeeEntity {
 
   private Date birthdate;
 
-//  @OneToMany
-//  private List<PhoneNumberEntity> phoneNumbers;
-
   @ElementCollection
   @Column(unique = true)
   private List<String> phoneNumbers;

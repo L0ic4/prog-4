@@ -42,6 +42,18 @@ public class EmployeeService {
     return employeeRepository.findBySexContaining(sex);
   }
 
+
+public Iterable<EmployeeEntity> findEmployeesByHireDate(String hireDate) {
+    return employeeRepository.findByHireDateContaining(hireDate);
+}
+
+public Iterable<EmployeeEntity> findEmployeesByResignationDate(String resignationDate) {
+    return employeeRepository.findByResignationDateContaining(resignationDate);
+}
+  public Iterable<EmployeeEntity> findEmployeesByPosition(String position) {
+    return employeeRepository.findByPositionContaining(position);
+  }
+
   public void update(EmployeeEntity employee) {
     employeeRepository.save(employee);
   }
