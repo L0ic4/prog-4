@@ -44,6 +44,9 @@ public class WebSecurityConfig {
         );
     http.authenticationProvider(authenticationProvider());
     http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+    http.logout(logout -> logout
+        .permitAll()
+        .deleteCookies("JWT"));
 
     return http.build();
   }
