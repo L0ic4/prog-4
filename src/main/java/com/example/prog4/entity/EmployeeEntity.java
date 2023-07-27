@@ -40,10 +40,6 @@ public class EmployeeEntity {
 
   private Date birthdate;
 
-//  @ElementCollection
-//  @Column(unique = true)
-//  private List<String> phoneNumbers;
-
   @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<PhoneNumberEntity> phoneNumbers = new ArrayList<>();
   private String workEmail;

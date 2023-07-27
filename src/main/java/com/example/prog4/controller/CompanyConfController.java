@@ -2,12 +2,15 @@ package com.example.prog4.controller;
 
 import com.example.prog4.entity.CompanyConf;
 import com.example.prog4.service.CompanyConfService;
+import java.io.IOException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @AllArgsConstructor
@@ -20,9 +23,11 @@ public class CompanyConfController {
     model.addAttribute("companyConf", new CompanyConf());
     return "company-add";
   }
-  @PutMapping("/crupdatecompanyconf")
-  public String crupdateCompanyConf(@ModelAttribute("companyConf") CompanyConf companyConf) {
-    companyConfService.crupdateCompanyConf(companyConf);
+
+  @PostMapping("/crupdatecompanyconf")
+  public String crupdateCompanyConf(@ModelAttribute("companyConf") CompanyConf companyConf,
+                                    @RequestParam("image") MultipartFile imageFile) throws IOException {
+    companyConfService.crupdateCompanyConf(companyConf, imageFile);
     return "redirect:/employees";
   }
 }

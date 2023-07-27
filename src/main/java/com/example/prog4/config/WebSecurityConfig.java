@@ -34,12 +34,14 @@ public class WebSecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.csrf(AbstractHttpConfigurer::disable)
-        .sessionManagement(
+    http.cors(AbstractHttpConfigurer::disable);
+    http.csrf(AbstractHttpConfigurer::disable);
+    http.sessionManagement(
             session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth ->
             auth.requestMatchers(HttpMethod.GET, "/login", "/signup", "/styles/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/createuser", "/connectuser").permitAll()
+                .requestMatchers(HttpMethod.PUT).authenticated()
                 .anyRequest().authenticated()
         );
     http.authenticationProvider(authenticationProvider());
@@ -47,7 +49,6 @@ public class WebSecurityConfig {
     http.logout(logout -> logout
         .permitAll()
         .deleteCookies("JWT"));
-
     return http.build();
   }
 

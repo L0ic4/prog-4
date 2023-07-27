@@ -29,7 +29,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                   FilterChain filterChain) throws ServletException, IOException {
     String requestURI = request.getRequestURI();
-    if (requestURI.equals("/login") || requestURI.equals("/signup") || requestURI.equals("/createuser") || requestURI.equals("/connectuser")) {
+    if (requestURI.equals("/login") || requestURI.equals("/signup") ||
+        requestURI.equals("/createuser") || requestURI.equals("/connectuser")) {
       // Si le chemin correspond à "/login" ou "/signup", continuer la chaîne de filtres sans authentification
       filterChain.doFilter(request, response);
       return;
