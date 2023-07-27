@@ -3,8 +3,10 @@ package com.example.prog4.controller;
 import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -34,11 +36,15 @@ public class EmployeesController {
                                 @RequestParam(required = false) String hiredate,
                                 @RequestParam(required = false) String resigndate,
                                 @RequestParam(required = false) boolean isDownload,
+                                @RequestParam(required = false) String code,
                                 @RequestParam(required = false, defaultValue = "asc")
                                 String orderBy,
-                                Model model, HttpServletResponse response) {
+                                Model model, HttpServletResponse response,
+                                HttpServletRequest request) {
 
     Iterable<EmployeeEntity> employees;
+    System.out.println(response.getHeader("Authorization"));
+    System.out.println(request.getHeader("Authorization"));
 
     if (firstname != null) {
       employees = employeeService.findEmployeesByFirstname(firstname);
@@ -50,6 +56,8 @@ public class EmployeesController {
       employees = employeeService.findEmployeesByHireDate(hiredate);
     } else if (resigndate != null) {
       employees = employeeService.findEmployeesByResignationDate(resigndate);
+    } else if (code != null) {
+      employees = employeeService.findByPhoneCountryCode(code);
     } else if (sex != null) {
       employees = employeeService.findEmployeesBySex(sex);
     } else {
@@ -77,8 +85,12 @@ public class EmployeesController {
 
   @PostMapping("/save")
   public String saveEmployee(@ModelAttribute("employee") EmployeeEntity employee,
-                             @RequestParam("image") MultipartFile imageFile) throws IOException {
-    employeeService.save(employee, imageFile);
+                             @RequestParam("image") MultipartFile imageFile,
+                             @RequestParam("codes") String[] codes,
+                             @RequestParam("phones") String[] phones) throws IOException {
+    List<String> codesList = Arrays.asList(codes);
+    List<String> phonesList = Arrays.asList(phones);
+    employeeService.save(employee, imageFile, codesList, phonesList);
     return "redirect:/employees";
   }
 }

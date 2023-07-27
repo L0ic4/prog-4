@@ -3,101 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" th:href="@{/styles/card.css}"/>
 </head>
 <body th:if="${employee}">
+<div class="container mx-auto my-60">
+    <div>
+        <div class="bg-white relative shadow rounded-lg w-5/6 md:w-5/6  lg:w-4/6 xl:w-3/6 mx-auto">
+            <div class="flex justify-center">
+                <img alt=""
+                     class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
+                     src=""
+                     th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}">
+            </div>
+            <div class="mt-16">
+                <h1 class="font-bold text-center text-3xl text-gray-900" th:text="${employee.firstname}"></h1>
+                <p class="text-center text-sm text-gray-400 font-medium">Loica Consolidated</p>
+                <p>
+                        <span>
+                        </span>
+                </p>
+                <div class="my-5 px-6">
+                    <a class="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white"
+                       href="#">Connect
+                        with <span class="font-bold">@pantazisoft</span></a>
+                </div>
+                <div class="flex justify-between items-center my-5 px-6">
+                    <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
+                       href="">Facebook</a>
+                    <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
+                       href="">Twitter</a>
+                    <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
+                       href="">Instagram</a>
+                    <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
+                       href="">Email</a>
+                </div>
 
-<div class="container">
-    <header>
-        <img alt="mbola tsy mety" height="250" th:src="'data:image/jpeg;base64,' + ${employee.imageBase64}"
-             width="150"/>
-        <div>
-            <h2>Loica Consolidated</h2>
-            <a th:text="${employee.workEmail}"></a>
-            <br/>
-            <h3 th:text="${employee.employeeNumber}"></h3>
+                <div class="w-full">
+                    <h3 class="font-medium text-gray-900 text-left px-6" th:text="${employee.employeeNumber}"></h3>
+                    <div class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Lastname :
+                            <span class="text-gray-500 text-xs" th:text="${employee.lastname}"></span>
+                        </a>
+
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Birthdate :
+                            <span class="text-gray-500 text-xs" th:text="${employee.birthdate}"></span>
+                        </a>
+
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Phone Numbers :
+                            <td>
+                                <ul>
+                                    <li th:each="phoneNumber : ${employee.phoneNumbers}"
+                                        th:text="${phoneNumber.countryCode + ' ' + phoneNumber.phoneNumber}"></li>
+                                </ul>
+                            </td>
+                            <!--                            <span class="text-gray-500 text-xs" th:text="${employee.phoneNumbers}"></span>-->
+                        </a>
+
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Work Email
+                            <span class="text-gray-500 text-xs" th:text="${employee.workEmail}"></span>
+                        </a>
+
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Personnal Email
+                            <span class="text-gray-500 text-xs" th:text="${employee.personalEmail}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            CIN numbers :
+                            <span class="text-gray-500 text-xs" th:text="${employee.CIN}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Address :
+                            <span class="text-gray-500 text-xs" th:text="${employee.address}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Hire Date :
+                            <span class="text-gray-500 text-xs" th:text="${employee.hireDate}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Resignation Date :
+                            <span class="text-gray-500 text-xs" th:text="${employee.resignationDate}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            CNAPS numbers :
+                            <span class="text-gray-500 text-xs" th:text="${employee.position}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Children :
+                            <span class="text-gray-500 text-xs" th:text="${employee.children}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Sex :
+                            <span class="text-gray-500 text-xs" th:text="${employee.sex}"></span>
+                        </a>
+                        <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                           href="#">
+                            <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                                 src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                            Category :
+                            <span class="text-gray-500 text-xs" th:text="${employee.category}"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
-    <aside>
-        <h2>Firstname : </h2>
-        <h3 th:text="${employee.firstname}"></h3>
-        <h2>Lastname : </h2>
-        <h3 th:text="${employee.lastname}"></h3>
-        <h2>Sex : </h2>
-        <h3 th:text="${employee.sex}"></h3>
-        <h2>Personnal mail : </h2>
-        <h3 th:text="${employee.personalEmail}"></h3>
-        <h2>CIN : </h2>
-        <h3 th:text="${employee.CIN}"></h3>
-        <h2>PHONE : </h2>
-        <h3 th:text="${employee.phoneNumbers}"></h3>
-        <h2>ADDRESS : </h2>
-        <h3 th:text="${employee.address}"></h3>
-        <hr/>
-        <h3>Hire Date</h3>
-        <h4 th:text="${employee.hireDate}"></h4>
-        <h3>Resignation Date</h3>
-        <h4 th:text="${employee.resignationDate}"></h4>
-        <hr/>
-        <h3>CNAPS : </h3>
-        <h4 th:text="${employee.CNAPS}"></h4>
-        <h3>Position : </h3>
-        <h4 th:text="${employee.position}"></h4>
-        <h3>Category : </h3>
-        <h4 th:text="${employee.category}"></h4>
-        <h4>Children : </h4>
-        <p th:text="${employee.children}"></p>
-    </aside>
-    <!--
-    The main element contains the actual content of the resume, so the summary
-    and professional experience.
-    -->
-    <!--    <main>-->
-    <!--        <h3>Summary</h3>-->
-    <!--        <h4>Corporate Real Estate Executive</h4>-->
-    <!--        <p>-->
-    <!--            Increasing Bottom-Line Profitability Through Real Estate Strategies-->
-    <!--        </p>-->
-    <!--        <p>-->
-    <!--            Accomplished executive with a proven ability to develop and implement real-estate strategies that support business and financial objectives. Have led key initiatives that reduced operating budget by $32 million and contributed to 550% stock increase. Recognized as an expert in applying financial concepts to asset management decisions.-->
-    <!--        </p>-->
-    <!--        <h3>Professional Experience</h3>-->
-    <!--        <ol>-->
-    <!--            <li>-->
-    <!--                <h4>Corporate Real Estate Executive</h4>-->
-    <!--                <p>-->
-    <!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
-    <!--                </p>-->
-    <!--                <p>-->
-    <!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
-    <!--                </p>-->
-    <!--                <p>-->
-    <!--                    Outcomes:-->
-    <!--                <ul>-->
-    <!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
-    <!--                    <li>Improved demand forecasting that reduced backorders to retail partners by 17%.</li>-->
-    <!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
-    <!--                </ul>-->
-    <!--                </p>-->
-    <!--            </li>-->
-    <!--            <li>-->
-    <!--                <h4>Corporate Real Estate Executive</h4>-->
-    <!--                <p>-->
-    <!--                    <span class="company">Company Name</span> . Boston, MA . Data Analyst, 2019-->
-    <!--                </p>-->
-    <!--                <p>-->
-    <!--                    Data Mining and Modeling: <i>Collected, cleansed, and provided modeling and analyses of structured and unstructured data used for major business initiatives.</i>-->
-    <!--                </p>-->
-    <!--                <p>-->
-    <!--                    Outcomes:-->
-    <!--                <ul>-->
-    <!--                    <li>Executed 15% reduction in transportation costs, resulting in $1.2M annual savings.</li>-->
-    <!--                    <li>Completed focus group and BI research that helped boost NW region sales by 10%.</li>-->
-    <!--                </ul>-->
-    <!--                </p>-->
-    <!--            </li>-->
-    <!--        </ol>-->
-    <!--    </main>-->
+
+    </div>
 </div>
 </body>
 </html>

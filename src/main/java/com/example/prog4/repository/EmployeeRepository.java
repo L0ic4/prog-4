@@ -30,6 +30,8 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Intege
   @Query(nativeQuery = true, value = "SELECT e.* FROM employee_entity e WHERE e.resignation_date LIKE CONCAT('%', :resignation_date)")
   List<EmployeeEntity> findByResignationDateContaining(String resignation_date);
 
+  @Query(value = "SELECT * FROM employee e JOIN phone_number pn ON e.id = pn.employee_id WHERE pn.country_code = ?1", nativeQuery = true)
+  List<EmployeeEntity> findAllByPhoneNumbersCountryCode(String countryCode);
 
   List<EmployeeEntity> findByFirstnameContainingOrderByFirstnameAsc(String firstname);
 

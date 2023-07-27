@@ -1,9 +1,11 @@
 package com.example.prog4.service;
 
 import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.entity.PhoneNumberEntity;
 import com.example.prog4.repository.EmployeeRepository;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +15,27 @@ import org.springframework.web.multipart.MultipartFile;
 public class EmployeeService {
   private final EmployeeRepository employeeRepository;
 
-  public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
+  public void save(EmployeeEntity employee, MultipartFile imageFile, List<String> phoneNumbers,
+                   List<String> countryCodes) throws IOException {
+
+    // Vérifier si les listes phoneNumbers et countryCodes ont la même taille
+    if (phoneNumbers.size() != countryCodes.size()) {
+      throw new IllegalArgumentException(
+          "Les listes phoneNumbers et countryCodes doivent avoir la même taille.");
+    }
+
+    for (int i = 0; i < phoneNumbers.size(); i++) {
+      String phoneNumberStr = phoneNumbers.get(i);
+      String countryCodeStr = countryCodes.get(i);
+
+      PhoneNumberEntity phoneNumber = new PhoneNumberEntity();
+      phoneNumber.setPhoneNumber(phoneNumberStr);
+      phoneNumber.setCountryCode(countryCodeStr);
+
+      employee.addPhoneNumber(phoneNumber);
+    }
+
+
     String matricule = generateMatricule();
     employee.setEmployeeNumber(matricule);
     byte[] imageBytes = imageFile.getBytes();
@@ -22,6 +44,9 @@ public class EmployeeService {
     employeeRepository.save(employee);
   }
 
+  public Iterable<EmployeeEntity> findByPhoneCountryCode(String countryCode) {
+    return employeeRepository.findAllByPhoneNumbersCountryCode(countryCode);
+  }
 
   public EmployeeEntity findById(int id) {
     return employeeRepository.findById(id).orElse(null);

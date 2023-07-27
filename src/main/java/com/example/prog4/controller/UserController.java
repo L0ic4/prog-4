@@ -1,6 +1,5 @@
 package com.example.prog4.controller;
 
-import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.entity.UserEntity;
 import com.example.prog4.service.JwtService;
 import com.example.prog4.service.UserService;
@@ -25,7 +24,7 @@ public class UserController {
   private final AuthenticationManager authenticationManager;
 
   @GetMapping("/signup")
-  public String CreateUser(Model model) {
+  public String signUp(Model model) {
     model.addAttribute("user", new UserEntity());
     return "sign_up";
   }
@@ -43,17 +42,20 @@ public class UserController {
     return "login";
   }
 
-//  @PostMapping("/connectuser")
-//  public String login(@ModelAttribute("user") UserEntity userEntity, HttpServletResponse response) {
-//    Authentication authentication = authenticationManager.authenticate(
-//        new UsernamePasswordAuthenticationToken(userEntity.getUsername(),
-//            userEntity.getPassword()));
-//    if (authentication.isAuthenticated()) {
-//      Cookie cookie = new Cookie("JWT", jwtService.generateToken(userEntity.getUsername()));
-//      response.addCookie(cookie);
-//    } else {
-//      System.out.println("Not authenticated");
-//    }
-//    return "redirect:/employees";
-//  }
+  @PostMapping("/connectuser")
+  public String connectUser(@ModelAttribute("user") UserEntity userEntity,
+                            HttpServletResponse response) {
+    Authentication authentication = authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(userEntity.getUsername(),
+            userEntity.getPassword()));
+    String Token;
+    if (authentication.isAuthenticated()) {
+      Token = jwtService.generateToken(userEntity.getUsername());
+      Cookie cookie = new Cookie("JWT", Token);
+      response.addCookie(cookie);
+    } else {
+      System.out.println("Not authenticated");
+    }
+    return "redirect:/employees";
+  }
 }

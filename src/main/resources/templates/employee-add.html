@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/styles/add.css}"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/styles/style.build.tailwind.css}"/>
 </head>
 <body>
 <div class="login-box">
@@ -25,10 +26,14 @@
             <input id="address" th:field="*{address}" type="text"/>
             <label for="address">Address:</label>
         </div>
+
         <div class="user-box">
-            <input id="phone" multiple name="phone"
-                   pattern="^\+?261(32|33|34|38)[0-9]{7}(,\+?261(32|33|34|38)[0-9]{7})*$" required
-                   th:field="*{phoneNumbers}" type="tel">
+            <input id="code" multiple name="codes" required type="tel">
+            <label for="code">Contry Code:</label>
+        </div>
+
+        <div class="user-box">
+            <input id="phone" multiple name="phones" required type="tel">
             <label for="phone">Phone number:</label>
         </div>
         <div class="user-box">
