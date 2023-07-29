@@ -22,34 +22,19 @@
         </div>
         <div class="mt-16">
             <h1 class="font-bold text-center text-3xl text-gray-900" th:text="${employee.firstname}"></h1>
-            <p class="text-center text-sm text-gray-400 font-medium">Loica Consolidated</p>
+            <p class="text-center text-sm text-gray-400 font-medium">I work at </p>
+            <p th:text="${companyConfGlobal.getCompanyName()}" class="text-center text-sm text-gray-400 font-medium"></p>
             <p>
                         <span>
                         </span>
             </p>
-            <div class="my-5 px-6">
-                <a class="text-gray-200 block rounded-lg text-center font-medium leading-6 px-6 py-3 bg-gray-900 hover:bg-black hover:text-white"
-                   href="#">Connect
-                    with <span class="font-bold">@pantazisoft</span></a>
-            </div>
-            <div class="flex justify-between items-center my-5 px-6">
-                <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                   href="">Facebook</a>
-                <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                   href="">Twitter</a>
-                <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                   href="">Instagram</a>
-                <a class="text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-150 ease-in font-medium text-sm text-center w-full py-3"
-                   href="">Email</a>
-            </div>
-
             <div class="w-full">
                 <h3 class="font-medium text-gray-900 text-left px-6" th:text="${employee.employeeNumber}"></h3>
                 <div class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Lastname :
                         <span class="text-gray-500 text-xs" th:text="${employee.lastname}"></span>
                     </a>
@@ -57,7 +42,7 @@
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Birthdate :
                         <span class="text-gray-500 text-xs" th:text="${employee.birthdate}"></span>
                     </a>
@@ -65,7 +50,7 @@
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Phone Numbers :
                         <td>
                             <ul>
@@ -79,71 +64,71 @@
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
-                        Work Email
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+                        Work Email :
                         <span class="text-gray-500 text-xs" th:text="${employee.workEmail}"></span>
                     </a>
 
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
-                        Personnal Email
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+                        Personal Email :
                         <span class="text-gray-500 text-xs" th:text="${employee.personalEmail}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         CIN numbers :
                         <span class="text-gray-500 text-xs" th:text="${employee.CIN}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Address :
                         <span class="text-gray-500 text-xs" th:text="${employee.address}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Hire Date :
                         <span class="text-gray-500 text-xs" th:text="${employee.hireDate}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Resignation Date :
                         <span class="text-gray-500 text-xs" th:text="${employee.resignationDate}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         CNAPS numbers :
                         <span class="text-gray-500 text-xs" th:text="${employee.position}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Children :
                         <span class="text-gray-500 text-xs" th:text="${employee.children}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Sex :
                         <span class="text-gray-500 text-xs" th:text="${employee.sex}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
-                             src="https://avatars0.githubusercontent.com/u/35900628?v=4">
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Category :
                         <span class="text-gray-500 text-xs" th:text="${employee.category}"></span>
                     </a>
