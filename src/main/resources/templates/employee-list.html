@@ -3,44 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/styles/list.css}"/>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<table class="container">
-    <thead>
-    <tr>
-        <th><h1>ID</h1></th>
-        <th><h1>Name</h1></th>
-        <th><h1>First Name</h1></th>
-        <th><h1>Birthdate</h1></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="employee : ${employees}">
-        <td>
-            <a th:href="@{'/employees/' + ${employee.id}}">
-                <!-- Remplacez '/employee/' par l'URL de votre page de destination -->
-                <span th:text="${employee.id}"></span>
-            </a>
-        </td>
-        <td>
-            <a th:href="@{'/employees/' + ${employee.id}}">
-                <span th:text="${employee.firstname}"></span>
-            </a>
-        </td>
-        <td>
-            <a th:href="@{'/employees/' + ${employee.id}}">
-                <span th:text="${employee.lastname}"></span>
-            </a>
-        </td>
-        <td>
-            <a th:href="@{'/employees/' + ${employee.id}}">
-                <span th:text="${employee.birthdate}"></span>
-            </a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<a th:href="@{'/employees/add'}"> Add </a>
+<div class="flex min-h-screen flex-row bg-gray-100 text-gray-800">
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="my-24 container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
+        <div class=" overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 ">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                    <th class="px-6 py-3" scope="col">
+                        Number
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <div class="flex items-center">
+                            Firstname
+                            <a th:href="@{'/employees/add'}">
+                                <svg aria-hidden="true" class="w-3 h-3 ml-1.5" fill="currentColor"
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <div class="flex items-center">
+                            Lastname
+                            <a href="#">
+                                <svg aria-hidden="true" class="w-3 h-3 ml-1.5" fill="currentColor"
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <div class="flex items-center">
+                            Sex
+                            <a href="#">
+                                <svg aria-hidden="true" class="w-3 h-3 ml-1.5" fill="currentColor"
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <div class="flex items-center">
+                            Hire Date
+                            <a href="#">
+                                <svg aria-hidden="true" class="w-3 h-3 ml-1.5" fill="currentColor"
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <div class="flex items-center">
+                            Resignation Date
+                            <a href="#">
+                                <svg aria-hidden="true" class="w-3 h-3 ml-1.5" fill="currentColor"
+                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3" scope="col">
+                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                           th:href="@{'/employees/add'}">Add</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="bg-white border-b " th:each="employee : ${employees}">
+                    <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" scope="row"
+                        th:text="${employee.employeeNumber}">
+                    </th>
+                    <td class="px-6 py-4" th:text="${employee.firstname}">
+                    </td>
+                    <td class="px-6 py-4" th:text="${employee.lastname}">
+                    </td>
+                    <td class="px-6 py-4" th:text="${employee.sex}">
+                    </td>
+                    <td class="px-6 py-4" th:text="${employee.hireDate}">
+                    </td>
+                    <td class="px-6 py-4" th:text="${employee.resignationDate}">
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                           th:href="@{'/employees/' + ${employee.id}}">Show</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

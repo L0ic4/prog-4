@@ -26,7 +26,8 @@ public class CompanyConfController {
 
   @PostMapping("/crupdatecompanyconf")
   public String crupdateCompanyConf(@ModelAttribute("companyConf") CompanyConf companyConf,
-                                    @RequestParam("image") MultipartFile imageFile) throws IOException {
+                                    @RequestParam("image") MultipartFile imageFile)
+      throws IOException {
     companyConfService.crupdateCompanyConf(companyConf, imageFile);
     return "redirect:/employees";
   }

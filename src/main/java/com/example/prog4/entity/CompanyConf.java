@@ -1,5 +1,6 @@
 package com.example.prog4.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,12 +22,13 @@ import lombok.ToString;
 public class CompanyConf {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private int id;
   private String companyName;
   private String companyDescription;
   private String companyPhone;
   private String companySlogan;
-  private byte[] companyLogo;
+  @Column(columnDefinition = "TEXT")
+  private String companyLogoBase64;
   private String NIF;
   private String STAT;
   private String RCS;

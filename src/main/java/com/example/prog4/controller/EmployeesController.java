@@ -43,8 +43,6 @@ public class EmployeesController {
                                 HttpServletRequest request) {
 
     Iterable<EmployeeEntity> employees;
-    System.out.println(response.getHeader("Authorization"));
-    System.out.println(request.getHeader("Authorization"));
 
     if (firstname != null) {
       employees = employeeService.findEmployeesByFirstname(firstname);
