@@ -41,7 +41,6 @@ public class WebSecurityConfig {
         .authorizeHttpRequests(auth ->
             auth.requestMatchers(HttpMethod.GET, "/login", "/signup", "/styles/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/createuser", "/connectuser").permitAll()
-                .requestMatchers(HttpMethod.PUT).authenticated()
                 .anyRequest().authenticated()
         );
     http.authenticationProvider(authenticationProvider());
