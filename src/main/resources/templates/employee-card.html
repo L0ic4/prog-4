@@ -55,10 +55,9 @@
                         <td>
                             <ul>
                                 <li th:each="phoneNumber : ${employee.phoneNumbers}"
-                                    th:text="${phoneNumber.countryCode + ' ' + phoneNumber.phoneNumber}"></li>
+                                    th:text="${phoneNumber.phoneNumber + ' ' + phoneNumber.countryCode }"></li>
                             </ul>
                         </td>
-                        <!--                            <span class="text-gray-500 text-xs" th:text="${employee.phoneNumbers}"></span>-->
                     </a>
 
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
@@ -109,7 +108,7 @@
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
                              th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         CNAPS numbers :
-                        <span class="text-gray-500 text-xs" th:text="${employee.position}"></span>
+                        <span class="text-gray-500 text-xs" th:text="${employee.CNAPS}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
                        href="#">
@@ -131,6 +130,13 @@
                              th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                         Category :
                         <span class="text-gray-500 text-xs" th:text="${employee.category}"></span>
+                    </a>
+                    <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
+                       href="#">
+                        <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
+                             th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+                        Position :
+                        <span class="text-gray-500 text-xs" th:text="${employee.position}"></span>
                     </a>
                 </div>
             </div>

@@ -59,7 +59,6 @@ public class EmployeeEntity {
   @Column(columnDefinition = "TEXT")
   private String imageBase64;
 
-  // Méthodes pour ajouter et supprimer des numéros de téléphone
   public void addPhoneNumber(PhoneNumberEntity phoneNumber) {
     phoneNumbers.add(phoneNumber);
     phoneNumber.setEmployee(this);

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,41 +45,13 @@ public class EmployeeService {
     employeeRepository.save(employee);
   }
 
-  public Iterable<EmployeeEntity> findByPhoneCountryCode(String countryCode) {
-    return employeeRepository.findAllByPhoneNumbersCountryCode(countryCode);
-  }
 
   public EmployeeEntity findById(int id) {
     return employeeRepository.findById(id).orElse(null);
   }
 
-  public Iterable<EmployeeEntity> findAll() {
-    return employeeRepository.findAll();
-  }
-
-  public Iterable<EmployeeEntity> findEmployeesByFirstname(String firstname) {
-    return employeeRepository.findByFirstnameContaining(firstname);
-  }
-
-  public Iterable<EmployeeEntity> findEmployeesByLastname(String lastname) {
-    return employeeRepository.findByLastnameContaining(lastname);
-  }
-
-  public Iterable<EmployeeEntity> findEmployeesBySex(String sex) {
-    return employeeRepository.findBySexContaining(sex);
-  }
-
-
-  public Iterable<EmployeeEntity> findEmployeesByHireDate(String hireDate) {
-    return employeeRepository.findByHireDateContaining(hireDate);
-  }
-
-  public Iterable<EmployeeEntity> findEmployeesByResignationDate(String resignationDate) {
-    return employeeRepository.findByResignationDateContaining(resignationDate);
-  }
-
-  public Iterable<EmployeeEntity> findEmployeesByPosition(String position) {
-    return employeeRepository.findByPositionContaining(position);
+  public Iterable<EmployeeEntity> findAll(Specification<EmployeeEntity> entitySpec) {
+    return employeeRepository.findAll(entitySpec);
   }
 
 
