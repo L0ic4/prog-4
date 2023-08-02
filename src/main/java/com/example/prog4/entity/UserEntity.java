@@ -26,7 +26,7 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(unique = true)
+  @Column(unique = true,name = "UniqueUserName")
   private String username;
 
   private String password;

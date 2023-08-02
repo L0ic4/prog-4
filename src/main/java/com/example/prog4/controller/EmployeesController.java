@@ -3,12 +3,18 @@ package com.example.prog4.controller;
 import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
+import net.kaczmarzyk.spring.data.jpa.domain.Like;
+import net.kaczmarzyk.spring.data.jpa.domain.LikeIgnoreCase;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Join;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,43 +33,31 @@ public class EmployeesController {
   private final EmployeeService employeeService;
   private final CsvFileGenerator csvFileGenerator;
 
+//@GetMapping("/download")
+//public void downloadEmployees(HttpServletResponse response){
+//  Iterable<EmployeeEntity> employees;
+//  employees = employeeService.findAll(entitySpec);
+//    csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
+//
+//}
 
   @GetMapping
-  public String getAllEmployees(@RequestParam(required = false) String firstname,
-                                @RequestParam(required = false) String lastname,
-                                @RequestParam(required = false) String sex,
-                                @RequestParam(required = false) String position,
-                                @RequestParam(required = false) String hiredate,
-                                @RequestParam(required = false) String resigndate,
-                                @RequestParam(required = false) boolean isDownload,
-                                @RequestParam(required = false) String code,
-                                @RequestParam(required = false, defaultValue = "asc")
-                                String orderBy,
-                                Model model, HttpServletResponse response,
-                                HttpServletRequest request) {
+  public String getAllEmployees(
+      @Join(path = "phoneNumbers" ,alias = "p")
+      @And({
+          @Spec(path = "firstname",params = "firstname",spec = LikeIgnoreCase.class),
+          @Spec(path = "lastname", params = "lastname",spec = LikeIgnoreCase.class),
+          @Spec(path = "sex", params = "sex",spec = LikeIgnoreCase.class),
+          @Spec(path = "position", params = "position",spec = LikeIgnoreCase.class),
+          @Spec(path = "hireDate", params = "hire",spec = GreaterThanOrEqual.class),
+          @Spec(path = "resignationDate", params = "resignation",spec = GreaterThanOrEqual.class),
+          @Spec(path = "p.phoneNumber",params = "phone",spec = LikeIgnoreCase.class),
+          @Spec(path = "p.countryCode",params = "code",spec = Like.class)
+      })
+      Specification<EmployeeEntity> entitySpec, Model model) {
 
-    Iterable<EmployeeEntity> employees;
+    Iterable<EmployeeEntity> employees = employeeService.findAll(entitySpec);
 
-    if (firstname != null) {
-      employees = employeeService.findEmployeesByFirstname(firstname);
-    } else if (lastname != null) {
-      employees = employeeService.findEmployeesByLastname(lastname);
-    } else if (position != null) {
-      employees = employeeService.findEmployeesByPosition(position);
-    } else if (hiredate != null) {
-      employees = employeeService.findEmployeesByHireDate(hiredate);
-    } else if (resigndate != null) {
-      employees = employeeService.findEmployeesByResignationDate(resigndate);
-    } else if (code != null) {
-      employees = employeeService.findByPhoneCountryCode(code);
-    } else if (sex != null) {
-      employees = employeeService.findEmployeesBySex(sex);
-    } else {
-      employees = employeeService.findAll();
-    }
-    if (isDownload) {
-      csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
-    }
     model.addAttribute("employees", employees);
     return "employee-list";
   }

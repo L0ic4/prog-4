@@ -78,11 +78,15 @@
                                                type="text"
                                                value=""/>
                                     </div>
-                                    <div class="user-box">
-                                        <input id="code" multiple name="codes" required type="tel">
-                                        <label for="code">Contry Code:</label>
+                                    <div class="md:col-span-2">
+                                        <label for="phone">Code</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="code"
+                                               multiple
+                                               name="codes"
+                                               placeholder="+261" required
+                                               type="tel"
+                                               value=""/>
                                     </div>
-
                                     <div class="md:col-span-2">
                                         <label for="phone">Phone</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
@@ -155,21 +159,7 @@
                                     </div>
                                     <div class="md:col-span-1">
                                         <label for="children">CHILDREN:</label>
-                                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                id="children"
-                                                th:field="*{children}">
-                                            <option th:text="0" th:value="0"></option>
-                                            <option th:text="1" th:value="1"></option>
-                                            <option th:text="2" th:value="2"></option>
-                                            <option th:text="3" th:value="3"></option>
-                                            <option th:text="4" th:value="4"></option>
-                                            <option th:text="5" th:value="5"></option>
-                                            <option th:text="6" th:value="6"></option>
-                                            <option th:text="7" th:value="7"></option>
-                                            <option th:text="8" th:value="8"></option>
-                                            <option th:text="9" th:value="9"></option>
-                                            <option th:text="10" th:value="10"></option>
-                                        </select>
+                                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" th:field="*{children}" type="number" id="children" name="children" min="0">
                                     </div>
 
                                     <div class="md:col-span-1">
