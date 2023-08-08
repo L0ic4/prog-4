@@ -1,4 +1,4 @@
-package com.example.prog4.repository;
+package com.example.prog4.repository.EmployeeDb;
 
 import com.example.prog4.entity.EmployeeEntity;
 import java.util.List;

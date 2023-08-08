@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="flex min-h-screen flex-row bg-gray-100 text-gray-800">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <div class="py-5 container w-full md:w-4/5 xl:w-3/5  mx-auto px-2 bg-gray-100 flex items-center justify-center">
+        <div class="container w-full mx-auto">
+            <div>
+
+                <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+                        <div class="text-gray-600">
+                            <img alt="logo" class="w-28 h-20" th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+                            <p class="font-medium text-lg">Modify Employee </p>
+                        </div>
+
+                        <div class="lg:col-span-2">
+                            <form enctype="multipart/form-data" method="post" th:action="@{/employees/save}"
+                                  th:object="${employee}">
+                                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                                    <div class="md:col-span-2">
+                                        <label for="firstname">Firstname</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="firstname"
+                                               name="full_name"
+                                               required th:field="*{firstname}"
+                                               type="text"
+                                               value=""
+                                        />
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="lastname">Lastname</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="lastname"
+                                               name="full_name"
+                                               required th:field="*{lastname}"
+                                               type="text"
+                                               value=""
+                                        />
+                                    </div>
+                                    <div class="md:col-span-1">
+                                        <label for="sex">Sex:</label>
+                                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                id="sex"
+                                                th:field="*{sex}">
+                                            <option th:text="Male" th:value="Male"></option>
+                                            <option th:text="Female" th:value="Female"></option>
+                                        </select>
+                                    </div>
+                                    <div class="md:col-span-1">
+                                        <label for="CIN">CIN</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="CIN"
+                                               name="full_name"
+                                               required th:field="*{CIN}"
+                                               type="text"
+                                               value=""
+                                        />
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="personalEmail">Personal Mail</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                               id="personalEmail"
+                                               name="email"
+                                               placeholder="email@domain.com" required
+                                               th:field="*{personalEmail}"
+                                               type="text"
+                                               value=""/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="proEmail">Professional Mail</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="proEmail"
+                                               name="email"
+                                               placeholder="email@domain.com" required
+                                               th:field="*{workEmail}"
+                                               type="text"
+                                               value=""/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="phone">Code</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="code"
+                                               multiple
+                                               name="codes"
+                                               placeholder="+261" required
+                                               type="tel"
+                                               value=""/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="phone">Phone</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
+                                               multiple
+                                               name="phones"
+                                               placeholder="+261" required
+                                               type="tel"
+                                               value=""/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="birthdate">Birthdate</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="birthdate"
+                                               name="phone"
+                                               placeholder="+261"
+                                               th:field="*{birthdate}"
+                                               type="date"
+                                               value=""/>
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label for="hireDate">Hire date</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="hireDate"
+                                               name="phone"
+                                               placeholder="+261" required
+                                               th:field="*{hireDate}"
+                                               type="date"
+                                               value=""/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="resignationDate">Resignation date date</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                               id="resignationDate"
+                                               name="phone"
+                                               placeholder="+261"
+                                               th:field="*{resignationDate}"
+                                               type="date"
+                                               value=""/>
+                                    </div>
+
+                                    <div class="md:col-span-3">
+                                        <label for="address">Address / Street</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="address"
+                                               name="address"
+                                               placeholder="" required th:field="*{address}"
+                                               type="text"
+                                               value=""
+
+                                        />
+                                    </div>
+
+                                    <div class="md:col-span-2">
+                                        <label for="CNAPS">CNAPS</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="CNAPS"
+                                               name="CNAPS"
+                                               placeholder="" required
+                                               th:field="*{CNAPS}"
+                                               type="text"
+                                               value=""/>
+                                    </div>
+
+
+                                    <div class="md:col-span-1">
+                                        <label for="position">POSITION:</label>
+                                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                id="position"
+                                                th:field="*{position}">
+                                            <option th:text="RH" th:value="'RH'"></option>
+                                            <option th:text="IT" th:value="'IT'"></option>
+                                        </select>
+                                    </div>
+                                    <div class="md:col-span-1">
+                                        <label for="children">CHILDREN:</label>
+                                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" th:field="*{children}" type="number" id="children" name="children" min="0">
+                                    </div>
+
+                                    <div class="md:col-span-1">
+                                        <label for="category">Category:</label>
+                                        <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                id="category"
+                                                th:field="*{category}">
+                                            <option th:text="M1" th:value="M1"></option>
+                                            <option th:text="M2" th:value="M2"></option>
+                                            <option th:text="OS1" th:value="OS1"></option>
+                                            <option th:text="OS2" th:value="OS2"></option>
+                                            <option th:text="OS3" th:value="OS3"></option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-span-full">
+                                        <label class="block text-sm font-medium leading-6 text-gray-900">Profil
+                                            picture</label>
+                                        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                            <div class="text-center">
+                                                <svg aria-hidden="true" class="mx-auto h-12 w-12 text-gray-300"
+                                                     fill="currentColor" viewBox="0 0 24 24">
+                                                    <path clip-rule="evenodd"
+                                                          d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                                                          fill-rule="evenodd"/>
+                                                </svg>
+                                                <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                                                    <label class="relative cursor-pointer rounded-md bg-white font-semi-bold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                                                           for="imageInput">
+                                                        <span>Upload a file</span>
+                                                        <input accept="image/*" class="sr-only" id="imageInput"
+                                                               name="image"
+                                                               type="file">
+                                                    </label>
+                                                    <p class="pl-1">or drag and drop</p>
+                                                </div>
+                                                <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="md:col-span-5 text-right">
+                                    <div class="inline-flex items-end">
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                                type="submit">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/script.js}" type="text/javascript"></script>
+</body>
+</html>

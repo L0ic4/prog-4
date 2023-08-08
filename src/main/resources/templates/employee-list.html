@@ -104,10 +104,10 @@
                         <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                            th:href="@{'/employees/add'}">Add</a>
                     </th>
-                    <th class="px-6 py-3" scope="col">
-                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                           th:href="@{'/employees?download=true'}">Download</a>
-                    </th>
+<!--                    <th class="px-6 py-3" scope="col">-->
+<!--                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"-->
+<!--                           th:href="@{__${#httpServletRequest.queryString}__(export=csv)}">Download</a>-->
+<!--                    </th>-->
                 </tr>
                 </thead>
                 <tbody>
@@ -128,6 +128,10 @@
                     <td class="px-6 py-4 text-right">
                         <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                            th:href="@{'/employees/' + ${employee.id}}">Show</a>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                           th:href="@{'/employees/' + ${employee.id}}">Update</a>
                     </td>
                 </tr>
                 </tbody>
