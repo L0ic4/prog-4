@@ -57,6 +57,7 @@ public class EmployeesController {
       Specification<EmployeeEntity> entitySpec, Model model) {
 
     Iterable<EmployeeEntity> employees = employeeService.findAll(entitySpec);
+    model.addAttribute("employee", new EmployeeEntity());
 
     model.addAttribute("employees", employees);
     return "employee-list";
