@@ -1,6 +1,6 @@
-package com.example.prog4.entity;
+package com.example.prog4.entity.cnaps;
 
-
+import com.example.prog4.entity.employee.PhoneNumberEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,10 +25,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeEntity {
+public class EmployeeCnapsEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @Column(unique = true, nullable = false)
+  private Integer endToEndId;
 
   @NotBlank
   private String firstname;
@@ -37,11 +40,7 @@ public class EmployeeEntity {
   private String lastname;
 
   @DateTimeFormat(pattern = "yyyy-MM-dd")
-
   private Date birthdate;
-
-  @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<PhoneNumberEntity> phoneNumbers = new ArrayList<>();
   private String workEmail;
   private String personalEmail;
   private String CIN;
@@ -58,10 +57,5 @@ public class EmployeeEntity {
   private String employeeNumber;
   @Column(columnDefinition = "TEXT")
   private String imageBase64;
-
-  public void addPhoneNumber(PhoneNumberEntity phoneNumber) {
-    phoneNumbers.add(phoneNumber);
-    phoneNumber.setEmployee(this);
-  }
-
 }
+

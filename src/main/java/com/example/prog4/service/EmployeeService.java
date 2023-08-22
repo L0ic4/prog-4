@@ -1,8 +1,8 @@
 package com.example.prog4.service;
 
-import com.example.prog4.entity.EmployeeEntity;
-import com.example.prog4.entity.PhoneNumberEntity;
-import com.example.prog4.repository.EmployeeRepository;
+import com.example.prog4.entity.employee.EmployeeEntity;
+import com.example.prog4.entity.employee.PhoneNumberEntity;
+import com.example.prog4.repository.employee.EmployeeRepository;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;

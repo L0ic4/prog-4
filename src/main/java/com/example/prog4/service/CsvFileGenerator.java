@@ -1,6 +1,6 @@
 package com.example.prog4.service;
 
-import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.entity.employee.EmployeeEntity;
 import com.opencsv.CSVWriter;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;

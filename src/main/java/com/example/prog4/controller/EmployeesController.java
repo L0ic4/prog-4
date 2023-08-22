@@ -1,19 +1,12 @@
 package com.example.prog4.controller;
 
-import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.entity.employee.EmployeeEntity;
 import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import lombok.AllArgsConstructor;
-import net.kaczmarzyk.spring.data.jpa.domain.GreaterThanOrEqual;
-import net.kaczmarzyk.spring.data.jpa.domain.Like;
-import net.kaczmarzyk.spring.data.jpa.domain.LikeIgnoreCase;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.Join;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,17 +36,6 @@ public class EmployeesController {
 
   @GetMapping
   public String getAllEmployees(
-      @Join(path = "phoneNumbers" ,alias = "p")
-      @And({
-          @Spec(path = "firstname",params = "firstname",spec = LikeIgnoreCase.class),
-          @Spec(path = "lastname", params = "lastname",spec = LikeIgnoreCase.class),
-          @Spec(path = "sex", params = "sex",spec = LikeIgnoreCase.class),
-          @Spec(path = "position", params = "position",spec = LikeIgnoreCase.class),
-          @Spec(path = "hireDate", params = "hire",spec = GreaterThanOrEqual.class),
-          @Spec(path = "resignationDate", params = "resignation",spec = GreaterThanOrEqual.class),
-          @Spec(path = "p.phoneNumber",params = "phone",spec = LikeIgnoreCase.class),
-          @Spec(path = "p.countryCode",params = "code",spec = Like.class)
-      })
       Specification<EmployeeEntity> entitySpec, Model model) {
 
     Iterable<EmployeeEntity> employees = employeeService.findAll(entitySpec);

@@ -1,6 +1,6 @@
 package com.example.prog4.controller;
 
-import com.example.prog4.entity.CompanyConf;
+import com.example.prog4.entity.employee.CompanyConf;
 import com.example.prog4.service.CompanyConfService;
 import java.io.IOException;
 import lombok.AllArgsConstructor;
