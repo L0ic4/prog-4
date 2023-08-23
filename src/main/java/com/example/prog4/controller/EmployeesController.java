@@ -1,9 +1,10 @@
 package com.example.prog4.controller;
 
+import com.example.prog4.controller.Data.InputData.EmployeeInput;
+import com.example.prog4.controller.Mapper.EmployeeMapper;
 import com.example.prog4.entity.EmployeeEntity;
 import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class EmployeesController {
   private final EmployeeService employeeService;
   private final CsvFileGenerator csvFileGenerator;
+  private final EmployeeMapper employeeMapper;
 
 //@GetMapping("/download")
 //public void downloadEmployees(HttpServletResponse response){
@@ -43,16 +45,16 @@ public class EmployeesController {
 
   @GetMapping
   public String getAllEmployees(
-      @Join(path = "phoneNumbers" ,alias = "p")
+      @Join(path = "phoneNumbers", alias = "p")
       @And({
-          @Spec(path = "firstname",params = "firstname",spec = LikeIgnoreCase.class),
-          @Spec(path = "lastname", params = "lastname",spec = LikeIgnoreCase.class),
-          @Spec(path = "sex", params = "sex",spec = LikeIgnoreCase.class),
-          @Spec(path = "position", params = "position",spec = LikeIgnoreCase.class),
-          @Spec(path = "hireDate", params = "hire",spec = GreaterThanOrEqual.class),
-          @Spec(path = "resignationDate", params = "resignation",spec = GreaterThanOrEqual.class),
-          @Spec(path = "p.phoneNumber",params = "phone",spec = LikeIgnoreCase.class),
-          @Spec(path = "p.countryCode",params = "code",spec = Like.class)
+          @Spec(path = "firstname", params = "firstname", spec = LikeIgnoreCase.class),
+          @Spec(path = "lastname", params = "lastname", spec = LikeIgnoreCase.class),
+          @Spec(path = "sex", params = "sex", spec = LikeIgnoreCase.class),
+          @Spec(path = "position", params = "position", spec = LikeIgnoreCase.class),
+          @Spec(path = "hireDate", params = "hire", spec = GreaterThanOrEqual.class),
+          @Spec(path = "resignationDate", params = "resignation", spec = GreaterThanOrEqual.class),
+          @Spec(path = "p.phoneNumber", params = "phone", spec = LikeIgnoreCase.class),
+          @Spec(path = "p.countryCode", params = "code", spec = Like.class)
       })
       Specification<EmployeeEntity> entitySpec, Model model) {
 
@@ -77,13 +79,13 @@ public class EmployeesController {
   }
 
   @PostMapping("/save")
-  public String saveEmployee(@ModelAttribute("employee") EmployeeEntity employee,
+  public String saveEmployee(@ModelAttribute("employee") EmployeeInput employee,
                              @RequestParam("image") MultipartFile imageFile,
                              @RequestParam("codes") String[] codes,
                              @RequestParam("phones") String[] phones) throws IOException {
     List<String> codesList = Arrays.asList(codes);
     List<String> phonesList = Arrays.asList(phones);
-    employeeService.save(employee, imageFile, codesList, phonesList);
+    employeeService.save(employeeMapper.toDomain(employee,codesList, phonesList), imageFile);
     return "redirect:/employees";
   }
 }

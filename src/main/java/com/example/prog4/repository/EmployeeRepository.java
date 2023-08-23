@@ -1,7 +1,6 @@
 package com.example.prog4.repository;
 
 import com.example.prog4.entity.EmployeeEntity;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;

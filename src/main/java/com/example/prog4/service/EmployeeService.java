@@ -16,26 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class EmployeeService {
   private final EmployeeRepository employeeRepository;
 
-  public void save(EmployeeEntity employee, MultipartFile imageFile, List<String> phoneNumbers,
-                   List<String> countryCodes) throws IOException {
-
-    // Vérifier si les listes phoneNumbers et countryCodes ont la même taille
-    if (phoneNumbers.size() != countryCodes.size()) {
-      throw new IllegalArgumentException(
-          "Les listes phoneNumbers et countryCodes doivent avoir la même taille.");
-    }
-
-    for (int i = 0; i < phoneNumbers.size(); i++) {
-      String phoneNumberStr = phoneNumbers.get(i);
-      String countryCodeStr = countryCodes.get(i);
-
-      PhoneNumberEntity phoneNumber = new PhoneNumberEntity();
-      phoneNumber.setPhoneNumber(phoneNumberStr);
-      phoneNumber.setCountryCode(countryCodeStr);
-
-      employee.addPhoneNumber(phoneNumber);
-    }
-
+  public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
 
     String matricule = generateMatricule();
     employee.setEmployeeNumber(matricule);
