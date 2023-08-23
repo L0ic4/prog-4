@@ -46,15 +46,15 @@
                                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                                 id="sex"
                                                 th:field="*{sex}">
-                                            <option th:text="Male" th:value="Male"></option>
-                                            <option th:text="Female" th:value="Female"></option>
+                                            <option th:text="Male" th:value="M"></option>
+                                            <option th:text="Female" th:value="F"></option>
                                         </select>
                                     </div>
                                     <div class="md:col-span-1">
                                         <label for="CIN">CIN</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="CIN"
                                                name="full_name"
-                                               required th:field="*{CIN}"
+                                               required th:field="*{cin}"
                                                type="text"
                                                value=""
                                         />
@@ -142,7 +142,7 @@
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="CNAPS"
                                                name="CNAPS"
                                                placeholder="" required
-                                               th:field="*{CNAPS}"
+                                               th:field="*{cnaps}"
                                                type="text"
                                                value=""/>
                                     </div>
@@ -152,9 +152,18 @@
                                         <label for="position">POSITION:</label>
                                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                                 id="position"
-                                                th:field="*{position}">
-                                            <option th:text="RH" th:value="'RH'"></option>
+                                                th:field="*{function}">
+                                            <option th:text="MANAGEMENT" th:value="'MANAGEMENT'"></option>
+                                            <option th:text="HR" th:value="'HR'"></option>
+                                            <option th:text="ACCOUNTING" th:value="'ACCOUNTING'"></option>
                                             <option th:text="IT" th:value="'IT'"></option>
+                                            <option th:text="MARKETING" th:value="'MARKETING'"></option>
+                                            <option th:text="LEGAL" th:value="'LEGAL'"></option>
+                                            <option th:text="DESIGN" th:value="'DESIGN'"></option>
+                                            <option th:text="COMMUNICATION" th:value="'COMMUNICATION'"></option>
+                                            <option th:text="SECURITY" th:value="'SECURITY'"></option>
+                                            <option th:text="CONSULTANT" th:value="'CONSULTANT'"></option>
+                                            <option th:text="TRANSPORTATION" th:value="'TRANSPORTATION'"></option>
                                         </select>
                                     </div>
                                     <div class="md:col-span-1">

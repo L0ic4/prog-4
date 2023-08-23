@@ -28,11 +28,12 @@ public class CsvFileGenerator {
       for (EmployeeEntity employee : employeeEntities) {
         String[] ligne = {employee.getFirstname(), employee.getLastname(),
             String.valueOf(employee.getBirthdate()), employee.getPhoneNumbers().toString(),
-            employee.getWorkEmail(), employee.getPersonalEmail(), employee.getCIN(),
+            employee.getWorkEmail(), employee.getPersonalEmail(), employee.getCin(),
             employee.getAddress(), String.valueOf(employee.getHireDate()),
-            String.valueOf(employee.getResignationDate()), employee.getCNAPS(),
-            employee.getPosition(),
-            String.valueOf(employee.getChildren()), employee.getSex(), employee.getCategory(),
+            String.valueOf(employee.getResignationDate()), employee.getCnaps(),
+            employee.getFunction().toString(),
+            String.valueOf(employee.getChildren()), employee.getSex().toString(),
+            employee.getCategory().toString(),
             employee.getEmployeeNumber()};
         csvWriter.writeNext(ligne);
       }
