@@ -1,6 +1,7 @@
-package com.example.prog4.entity;
+package com.example.prog4.entity.Cnaps;
 
 
+import com.example.prog4.entity.Employee.PhoneNumberEntity;
 import com.example.prog4.entity.enums.Category;
 import com.example.prog4.entity.enums.Function;
 import com.example.prog4.entity.enums.Sex;
@@ -27,12 +28,12 @@ import lombok.Setter;
 import org.hibernate.annotations.ColumnTransformer;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "cnaps_employee_entity")
 public class EmployeeEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,21 +42,23 @@ public class EmployeeEntity implements Serializable {
   private String firstname;
   @NotBlank(message = "Lastname is mandatory")
   private String lastname;
+
   @NotBlank(message = "Work Email is mandatory")
   @Email(message = "Work Email must be valid")
+  @Column(name = "work_email")
   private String workEmail;
+
   @NotBlank(message = "Personal Email is mandatory")
   @Email(message = "Personal Email must be valid")
+  @Column(name = "personal_email")
   private String personalEmail;
+
   @NotBlank(message = "CIN is mandatory")
   private String cin;
   @NotBlank(message = "Address is mandatory")
   private String address;
   private String cnaps;
   private int children;
-  private String employeeNumber;
-  @Column(columnDefinition = "TEXT")
-  private String imageBase64;
 
   @Enumerated(EnumType.STRING)
   @ColumnTransformer(read = "CAST(category AS varchar)", write = "CAST(? AS category)")
@@ -69,19 +72,16 @@ public class EmployeeEntity implements Serializable {
   @ColumnTransformer(read = "CAST(function AS varchar)", write = "CAST(? AS function)")
   private Function function;
 
-  @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<PhoneNumberEntity> phoneNumbers = new ArrayList<>();
-
   @DateTimeFormat(pattern = "yyyy-MM-dd")
   private Date birthdate;
+
   @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @Column(name = "hire_date")
   private Date hireDate;
+
   @DateTimeFormat(pattern = "yyyy-MM-dd")
+  @Column(name = "resignation_date")
   private Date resignationDate;
 
-  public void addPhoneNumber(PhoneNumberEntity phoneNumber) {
-    phoneNumbers.add(phoneNumber);
-    phoneNumber.setEmployee(this);
-  }
 
 }

@@ -1,7 +1,7 @@
-package com.example.prog4.config;
+package com.example.prog4.config.security;
 
-import com.example.prog4.entity.UserEntity;
-import com.example.prog4.repository.UserRepository;
+import com.example.prog4.entity.Employee.UserEntity;
+import com.example.prog4.repository.Employee.UserRepository;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +17,7 @@ public class UserInfoUserDetailsService implements UserDetailsService {
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Optional<UserEntity> user = userRepository.findByUsername(username);
-    return user.map(com.example.prog4.config.UserInfoUserDetails::new)
+    return user.map(UserInfoUserDetails::new)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
   }
 }

@@ -1,12 +1,11 @@
 package com.example.prog4.controller.Mapper;
 
 import com.example.prog4.controller.Data.InputData.EmployeeInput;
-import com.example.prog4.entity.EmployeeEntity;
-import com.example.prog4.entity.PhoneNumberEntity;
+import com.example.prog4.entity.Employee.EmployeeEntity;
+import com.example.prog4.entity.Employee.PhoneNumberEntity;
 import com.example.prog4.entity.enums.Category;
 import com.example.prog4.entity.enums.Function;
 import com.example.prog4.entity.enums.Sex;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;

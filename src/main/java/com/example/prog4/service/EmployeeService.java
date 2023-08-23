@@ -1,11 +1,10 @@
 package com.example.prog4.service;
 
-import com.example.prog4.entity.EmployeeEntity;
-import com.example.prog4.entity.PhoneNumberEntity;
-import com.example.prog4.repository.EmployeeRepository;
+import com.example.prog4.entity.Employee.EmployeeEntity;
+import com.example.prog4.repository.Employee.EmployeeRepository;
+import com.example.prog4.repository.Repository;
 import java.io.IOException;
 import java.util.Base64;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 @AllArgsConstructor
 public class EmployeeService {
-  private final EmployeeRepository employeeRepository;
+  private final Repository employeeRepository;
 
   public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
 

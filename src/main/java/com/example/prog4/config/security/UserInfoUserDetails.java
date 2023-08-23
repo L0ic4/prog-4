@@ -1,6 +1,6 @@
-package com.example.prog4.config;
+package com.example.prog4.config.security;
 
-import com.example.prog4.entity.UserEntity;
+import com.example.prog4.entity.Employee.UserEntity;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

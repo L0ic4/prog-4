@@ -1,6 +1,6 @@
-package com.example.prog4.config;
+package com.example.prog4.config.security;
 
-import com.example.prog4.repository.UserRepository;
+import com.example.prog4.repository.Employee.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

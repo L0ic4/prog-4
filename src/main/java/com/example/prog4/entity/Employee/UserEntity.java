@@ -1,4 +1,4 @@
-package com.example.prog4.entity;
+package com.example.prog4.entity.Employee;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +26,7 @@ public class UserEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(unique = true,name = "UniqueUserName")
+  @Column(unique = true,name = "unique_user_name")
   private String username;
 
   private String password;

@@ -1,7 +1,7 @@
 package com.example.prog4.service;
 
-import com.example.prog4.entity.CompanyConf;
-import com.example.prog4.repository.CompanyConfRepository;
+import com.example.prog4.entity.Employee.CompanyConf;
+import com.example.prog4.repository.Employee.CompanyConfRepository;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Optional;

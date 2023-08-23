@@ -1,4 +1,4 @@
-package com.example.prog4.config;
+package com.example.prog4.config.security;
 
 import com.example.prog4.service.JwtService;
 import jakarta.servlet.FilterChain;

@@ -2,7 +2,7 @@ package com.example.prog4.controller;
 
 import com.example.prog4.controller.Data.InputData.EmployeeInput;
 import com.example.prog4.controller.Mapper.EmployeeMapper;
-import com.example.prog4.entity.EmployeeEntity;
+import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.service.CsvFileGenerator;
 import com.example.prog4.service.EmployeeService;
 import java.io.IOException;
