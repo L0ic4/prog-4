@@ -1,5 +1,6 @@
 package com.example.prog4.controller.Data.InputData;
 
+import java.time.LocalDate;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +26,7 @@ public class EmployeeInput {
   private String category;
   private String sex;
   private String function;
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date birthdate;
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date hireDate;
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date resignationDate;
+  private LocalDate birthdate;
+  private LocalDate hireDate;
+  private LocalDate resignationDate;
 }

@@ -17,6 +17,7 @@ import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,16 +94,13 @@ public class EmployeeEntity implements Serializable {
   @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<PhoneNumberEntity> phoneNumbers = new ArrayList<>();
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private Date birthdate;
+  private LocalDate birthdate;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "hire_date")
-  private Date hireDate;
+  private LocalDate hireDate;
 
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
   @Column(name = "resignation_date")
-  private Date resignationDate;
+  private LocalDate resignationDate;
 
   public void addPhoneNumber(PhoneNumberEntity phoneNumber) {
     phoneNumbers.add(phoneNumber);

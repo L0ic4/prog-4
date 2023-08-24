@@ -33,8 +33,8 @@ CREATE TABLE if not exists "employee_entity"
     category         category                                 not null,
     sex              sex                                      not null,
     function         function                                 not null,
-    birthdate        TIMESTAMP WITHOUT TIME ZONE,
-    hire_date        TIMESTAMP WITHOUT TIME ZONE,
-    resignation_date TIMESTAMP WITHOUT TIME ZONE,
+    birthdate        date,
+    hire_date        date,
+    resignation_date date,
     CONSTRAINT pk_employeeentity PRIMARY KEY (id)
 );
