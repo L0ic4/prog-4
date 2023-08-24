@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.domain.Specification;
 
-public interface Repository {
+@org.springframework.stereotype.Repository
+public interface RepositoryFacade {
   void save(EmployeeEntity employee);
 
   Optional<EmployeeEntity> findById(int id);

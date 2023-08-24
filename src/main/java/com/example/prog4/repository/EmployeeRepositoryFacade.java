@@ -7,13 +7,13 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.domain.Specification;
 
 @org.springframework.stereotype.Repository
+@Primary
 @AllArgsConstructor
-@Slf4j
-public class RepositoryImpl implements Repository {
+public class EmployeeRepositoryFacade implements RepositoryFacade {
   private final EmployeeCnapsRepository employeeCnapsRepository;
   private final EmployeeRepository employeeRepository;
 
@@ -53,7 +53,6 @@ public class RepositoryImpl implements Repository {
 
   @Override
   public List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec) {
-    List<EmployeeEntity> employeeList = employeeRepository.findAll(spec);
-    return employeeList;
+    return employeeRepository.findAll(spec);
   }
 }

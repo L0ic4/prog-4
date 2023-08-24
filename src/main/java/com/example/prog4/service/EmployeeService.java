@@ -1,7 +1,7 @@
 package com.example.prog4.service;
 
 import com.example.prog4.entity.Employee.EmployeeEntity;
-import com.example.prog4.repository.Repository;
+import com.example.prog4.repository.RepositoryFacade;
 import java.io.IOException;
 import java.util.Base64;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 @AllArgsConstructor
 public class EmployeeService {
-  private final Repository employeeRepository;
+  private final RepositoryFacade employeeRepository;
 
   public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
     String matricule = generateMatricule();
