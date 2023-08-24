@@ -23,7 +23,7 @@ import lombok.ToString;
 public class CompanyConf implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
   @Column(name = "company_name")
   private String companyName;
 
@@ -37,7 +37,7 @@ public class CompanyConf implements Serializable {
   private String companySlogan;
 
 
-  @Column(name = "company_logo_base64",columnDefinition = "TEXT")
+  @Column(name = "company_logo_base64", columnDefinition = "TEXT")
   private String companyLogoBase64;
 
   @Column(name = "nif")

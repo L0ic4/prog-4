@@ -85,7 +85,7 @@ public class EmployeesController {
                              @RequestParam("phones") String[] phones) throws IOException {
     List<String> codesList = Arrays.asList(codes);
     List<String> phonesList = Arrays.asList(phones);
-    employeeService.save(employeeMapper.toDomain(employee,codesList, phonesList), imageFile);
+    employeeService.save(employeeMapper.toDomain(employee, codesList, phonesList), imageFile);
     return "redirect:/employees";
   }
 }

@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
@@ -36,9 +37,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class EmployeeEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
-  @Column(unique = true, nullable = false)
+  @Column(name = "end_to_end_id", unique = true, nullable = false)
   private Integer endToEndId;
 
   @NotBlank(message = "Firstname is mandatory")
@@ -60,13 +61,16 @@ public class EmployeeEntity implements Serializable {
   private String cin;
   @NotBlank(message = "Address is mandatory")
   private String address;
+
+  @Transient
   private String cnaps;
+
   private int children;
 
   @Column(name = "employee_number")
   private String employeeNumber;
 
-  @Column(columnDefinition = "TEXT",name = "image_base64")
+  @Column(columnDefinition = "TEXT", name = "image_base64")
   private String imageBase64;
 
   @Enumerated(EnumType.STRING)

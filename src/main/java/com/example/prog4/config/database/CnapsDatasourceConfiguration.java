@@ -19,26 +19,26 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
     entityManagerFactoryRef = "cnapsEntityManagerFactory",
     transactionManagerRef = "cnapsTransactionManager",
-    basePackages = { "com.example.prog4.repository.Cnaps" })
+    basePackages = {"com.example.prog4.repository.Cnaps"})
 public class CnapsDatasourceConfiguration {
-  @Bean(name="cnapsProperties")
+  @Bean(name = "cnapsProperties")
   @ConfigurationProperties("spring.datasource.cnaps")
   public DataSourceProperties dataSourceProperties() {
 
     return new DataSourceProperties();
   }
 
-  @Bean(name="cnapsDatasource")
+  @Bean(name = "cnapsDatasource")
   @ConfigurationProperties(prefix = "spring.datasource.cnaps")
-  public DataSource datasource(@Qualifier("cnapsProperties") DataSourceProperties properties){
+  public DataSource datasource(@Qualifier("cnapsProperties") DataSourceProperties properties) {
 
     return properties.initializeDataSourceBuilder().build();
   }
 
-  @Bean(name="cnapsEntityManagerFactory")
+  @Bean(name = "cnapsEntityManagerFactory")
   public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean
       (EntityManagerFactoryBuilder builder,
-       @Qualifier("cnapsDatasource") DataSource dataSource){
+       @Qualifier("cnapsDatasource") DataSource dataSource) {
 
     return builder.dataSource(dataSource)
         .packages("com.example.prog4.entity.Cnaps")

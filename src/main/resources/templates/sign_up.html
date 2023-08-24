@@ -9,7 +9,8 @@
 <section class="bg-gray-50">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a class="flex items-center mb-6 text-2xl font-semi-bold text-gray-900" href="#">
-            <img alt="logo" class="w-28 h-20" th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+            <img alt="logo" class="w-28 h-20"
+                 th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
             <div th:text="${companyConfGlobal.getCompanyName()}"></div>
         </a>
         <div class="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">

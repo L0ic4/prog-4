@@ -15,7 +15,8 @@
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
                         <div class="text-gray-600">
-                            <img alt="logo" class="w-28 h-20" th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
+                            <img alt="logo" class="w-28 h-20"
+                                 th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
                             <p class="font-medium text-lg">Add Employee </p>
                         </div>
 
@@ -136,6 +137,15 @@
 
                                         />
                                     </div>
+                                    <div class="md:col-span-3">
+                                        <label for="address">Cnaps</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="cnaps"
+                                               name="address"
+                                               placeholder="" required th:field="*{cnaps}"
+                                               type="text"
+                                               value=""
+                                        />
+                                    </div>
                                     <div class="md:col-span-1">
                                         <label for="position">POSITION:</label>
                                         <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -156,7 +166,9 @@
                                     </div>
                                     <div class="md:col-span-1">
                                         <label for="children">CHILDREN:</label>
-                                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" th:field="*{children}" type="number" id="children" name="children" min="0">
+                                        <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                               id="children" min="0" name="children" th:field="*{children}"
+                                               type="number">
                                     </div>
 
                                     <div class="md:col-span-1">

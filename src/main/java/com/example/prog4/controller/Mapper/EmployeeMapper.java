@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class EmployeeMapper {
-  public EmployeeEntity toDomain(EmployeeInput employeeInput,List<String> phoneNumbers,
+  public EmployeeEntity toDomain(EmployeeInput employeeInput, List<String> phoneNumbers,
                                  List<String> countryCodes) {
     EmployeeEntity employeeEntity = new EmployeeEntity();
 

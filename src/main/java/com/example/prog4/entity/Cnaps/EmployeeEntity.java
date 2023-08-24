@@ -1,11 +1,9 @@
 package com.example.prog4.entity.Cnaps;
 
 
-import com.example.prog4.entity.Employee.PhoneNumberEntity;
 import com.example.prog4.entity.enums.Category;
 import com.example.prog4.entity.enums.Function;
 import com.example.prog4.entity.enums.Sex;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,13 +11,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,7 +32,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class EmployeeEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
   @NotBlank(message = "Firstname is mandatory")
   private String firstname;
   @NotBlank(message = "Lastname is mandatory")

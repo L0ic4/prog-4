@@ -26,7 +26,7 @@ import lombok.Setter;
 public class PhoneNumberEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
   @NotBlank(message = "Country code is required")
 //  @Pattern(regexp= "^[+][0-9]{1,3}$",message = "Invalid country code")

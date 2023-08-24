@@ -24,9 +24,9 @@ import lombok.ToString;
 public class UserEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private Integer id;
 
-  @Column(unique = true,name = "unique_user_name")
+  @Column(unique = true, name = "unique_user_name")
   private String username;
 
   private String password;

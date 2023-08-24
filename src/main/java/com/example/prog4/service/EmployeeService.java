@@ -1,7 +1,6 @@
 package com.example.prog4.service;
 
 import com.example.prog4.entity.Employee.EmployeeEntity;
-import com.example.prog4.repository.Employee.EmployeeRepository;
 import com.example.prog4.repository.Repository;
 import java.io.IOException;
 import java.util.Base64;
@@ -16,7 +15,6 @@ public class EmployeeService {
   private final Repository employeeRepository;
 
   public void save(EmployeeEntity employee, MultipartFile imageFile) throws IOException {
-
     String matricule = generateMatricule();
     employee.setEmployeeNumber(matricule);
     byte[] imageBytes = imageFile.getBytes();
@@ -33,7 +31,6 @@ public class EmployeeService {
   public Iterable<EmployeeEntity> findAll(Specification<EmployeeEntity> entitySpec) {
     return employeeRepository.findAll(entitySpec);
   }
-
 
   public void update(EmployeeEntity employee) {
     employeeRepository.save(employee);

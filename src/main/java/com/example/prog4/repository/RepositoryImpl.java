@@ -19,24 +19,41 @@ public class RepositoryImpl implements Repository {
 
   @Override
   @Transactional
-  public void save(EmployeeEntity employeeEntity){
-    Optional<com.example.prog4.entity.Cnaps.EmployeeEntity> cnapsEmployee = employeeCnapsRepository.findById(1);
-
-    System.out.println(cnapsEmployee.get().getCnaps());
+  public void save(EmployeeEntity employeeEntity) {
+    com.example.prog4.entity.Cnaps.EmployeeEntity cnapsEmployee =
+        employeeCnapsRepository.getByCnaps(employeeEntity.getCnaps());
+    employeeEntity.setEndToEndId(cnapsEmployee.getId());
+    employeeRepository.save(employeeEntity);
   }
 
   @Override
   public Optional<EmployeeEntity> findById(int id) {
-    return Optional.empty();
+    Optional<EmployeeEntity> employee = employeeRepository.findById(id);
+
+    if (employee.isPresent()) {
+      Optional<com.example.prog4.entity.Cnaps.EmployeeEntity> employee1 =
+          employeeCnapsRepository.findById(employee.get().getEndToEndId());
+
+      if (employee1.isPresent()) {
+        EmployeeEntity employeeEntity = employee.get();
+        employeeEntity.setCnaps(employee1.get().getCnaps());
+        return Optional.of(employeeEntity);
+      } else {
+        return Optional.empty();
+      }
+    } else {
+      return Optional.empty();
+    }
   }
 
   @Override
   public EmployeeEntity findFirstByOrderByEmployeeNumberDesc() {
-    return null;
+    return employeeRepository.findFirstByOrderByEmployeeNumberDesc();
   }
 
   @Override
   public List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec) {
-    return null;
+    List<EmployeeEntity> employeeList = employeeRepository.findAll(spec);
+    return employeeList;
   }
 }

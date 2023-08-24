@@ -20,10 +20,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
     entityManagerFactoryRef = "employeeEntityManagerFactory",
     transactionManagerRef = "employeeTransactionManager",
-    basePackages = { "com.example.prog4.repository.Employee" })
+    basePackages = {"com.example.prog4.repository.Employee"})
 public class EmployeeDatasourceConfiguration {
   @Primary
-  @Bean(name="employeeProperties")
+  @Bean(name = "employeeProperties")
   @ConfigurationProperties("spring.datasource")
   public DataSourceProperties dataSourceProperties() {
 
@@ -31,18 +31,18 @@ public class EmployeeDatasourceConfiguration {
   }
 
   @Primary
-  @Bean(name="employeeDatasource")
+  @Bean(name = "employeeDatasource")
   @ConfigurationProperties(prefix = "spring.datasource")
-  public DataSource datasource(@Qualifier("employeeProperties") DataSourceProperties properties){
+  public DataSource datasource(@Qualifier("employeeProperties") DataSourceProperties properties) {
 
     return properties.initializeDataSourceBuilder().build();
   }
 
   @Primary
-  @Bean(name="employeeEntityManagerFactory")
+  @Bean(name = "employeeEntityManagerFactory")
   public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean
       (EntityManagerFactoryBuilder builder,
-       @Qualifier("employeeDatasource") DataSource dataSource){
+       @Qualifier("employeeDatasource") DataSource dataSource) {
 
     return builder.dataSource(dataSource)
         .packages("com.example.prog4.entity.Employee")
