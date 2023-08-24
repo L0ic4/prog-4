@@ -55,7 +55,7 @@
                         <td>
                             <ul>
                                 <li th:each="phoneNumber : ${employee.phoneNumbers}"
-                                    th:text="${phoneNumber.phoneNumber + ' ' + phoneNumber.countryCode }"></li>
+                                    th:text="${ phoneNumber.countryCode+ ' ' +phoneNumber.phoneNumber  }"></li>
                             </ul>
                         </td>
                     </a>

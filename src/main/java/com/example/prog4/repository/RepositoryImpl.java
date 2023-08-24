@@ -32,8 +32,10 @@ public class RepositoryImpl implements Repository {
   @Override
   public Optional<EmployeeEntity> findById(int id) {
     Optional<EmployeeEntity> employee = employeeRepository.findById(id);
-
     if (employee.isPresent()) {
+      LocalDate birthdate = employee.get().getBirthdate();
+      Integer age = ageCalculator(birthdate);
+      employee.get().setAge(age);
       Optional<com.example.prog4.entity.Cnaps.EmployeeEntity> employee1 =
           employeeCnapsRepository.findById(employee.get().getEndToEndId());
 
@@ -59,4 +61,9 @@ public class RepositoryImpl implements Repository {
     return employeeRepository.findAll(spec);
   }
 
+  public int ageCalculator(LocalDate birthdate){
+    LocalDate actualDate = LocalDate.now();
+    Period periodDifference = Period.between(birthdate,actualDate);
+    return periodDifference.getYears();
+  }
 }

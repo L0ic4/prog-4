@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class EmployeeInput {
   private String firstname;
   private String lastname;
+  private Integer salary;
   private String workEmail;
   private String personalEmail;
   private String cin;

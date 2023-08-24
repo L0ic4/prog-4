@@ -80,8 +80,8 @@
                                                value=""/>
                                     </div>
                                     <div class="md:col-span-2">
-                                        <label for="phone">Code</label>
-                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="code"
+                                        <label for="codes">Codes</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="codes"
                                                multiple
                                                name="codes"
                                                placeholder="+261" required
@@ -89,8 +89,8 @@
                                                value=""/>
                                     </div>
                                     <div class="md:col-span-2">
-                                        <label for="phone">Phone</label>
-                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
+                                        <label for="phones">Phones</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phones"
                                                multiple
                                                name="phones"
                                                placeholder="+261" required
@@ -142,6 +142,15 @@
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="cnaps"
                                                name="address"
                                                placeholder="" required th:field="*{cnaps}"
+                                               type="text"
+                                               value=""
+                                        />
+                                    </div>
+                                    <div class="md:col-span-3">
+                                        <label for="address">Salary</label>
+                                        <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="salary"
+                                               name="salary"
+                                               placeholder="" required th:field="*{salary}"
                                                type="text"
                                                value=""
                                         />
