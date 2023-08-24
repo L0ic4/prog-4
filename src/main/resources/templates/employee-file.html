@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Fiche employé</title>
     <link rel="stylesheet" th:href="@{/styles/file.css}"/>
 </head>
@@ -11,11 +11,11 @@
     <div class="head">
         <div id="project">
             <div id="picture">
-                <img  th:src="${employee.imageBase64}"  alt=""/>
+                <img alt="" th:src="${employee.imageBase64}"/>
                 <!--            'data:image/jpeg;base64,' +-->
             </div>
         </div>
-        <div id="company" class="clearfix">
+        <div class="clearfix" id="company">
             <div class="inline">
                 <h3>Numéro matricule:</h3>
                 <h4 th:text="${employee.employeeNumber}"></h4>
@@ -64,12 +64,12 @@
 </main>
 <footer class="container">
     <div id="logo">
-        <img src="logo.png" />
+        <img src="logo.png"/>
     </div>
     <div class="info">
-        <h3  th:text="${companyConfGlobal.getCompanyName()}"></h3>
+        <h3 th:text="${companyConfGlobal.getCompanyName()}"></h3>
         <br>
-        <h3  th:text="${companyConfGlobal.getNIF}">NIF : 123</h3>
+        <h3 th:text="${companyConfGlobal.getNIF}">NIF : 123</h3>
         <br>
         <h3 th:text="${companyConfGlobal.getSTAT}">STAT : 456</h3>
     </div>

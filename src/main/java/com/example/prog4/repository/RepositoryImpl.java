@@ -6,16 +6,14 @@ import com.example.prog4.repository.Employee.EmployeeRepository;
 import jakarta.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Component;
 
-@org.springframework.stereotype.Repository
+@Component
 @AllArgsConstructor
-@Slf4j
 public class RepositoryImpl implements Repository {
   private final EmployeeCnapsRepository employeeCnapsRepository;
   private final EmployeeRepository employeeRepository;
@@ -61,9 +59,9 @@ public class RepositoryImpl implements Repository {
     return employeeRepository.findAll(spec);
   }
 
-  public int ageCalculator(LocalDate birthdate){
+  public int ageCalculator(LocalDate birthdate) {
     LocalDate actualDate = LocalDate.now();
-    Period periodDifference = Period.between(birthdate,actualDate);
+    Period periodDifference = Period.between(birthdate, actualDate);
     return periodDifference.getYears();
   }
 }

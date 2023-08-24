@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Poppins:wght@600&display=swap');
-*{
+
+* {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
 }
@@ -26,7 +27,7 @@ header {
     margin-bottom: 30px;
 }
 
-#picture img{
+#picture img {
     width: 132px;
     height: 170px;
 }
@@ -36,8 +37,8 @@ header {
 }
 
 h1 {
-    border-top: 1px solid  #5D6975;
-    border-bottom: 1px solid  #5D6975;
+    border-top: 1px solid #5D6975;
+    border-bottom: 1px solid #5D6975;
     color: #5D6975;
     font-size: 2.4em;
     line-height: 1.4em;
@@ -46,7 +47,8 @@ h1 {
     margin: 0 0 20px 0;
     background-image: url('../img/dimension.png');
 }
-h2,h3{
+
+h2, h3 {
     color: #5D6975;;
 }
 

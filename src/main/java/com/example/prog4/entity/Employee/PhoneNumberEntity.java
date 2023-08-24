@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotBlank;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +24,7 @@ import lombok.Setter;
 @Entity(name = "phone_number_entity")
 @Table(uniqueConstraints = {
     @UniqueConstraint(name = "UniquePhoneNumbers", columnNames = {"phone_number", "country_code"})})
-public class PhoneNumberEntity {
+public class PhoneNumberEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;

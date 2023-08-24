@@ -71,6 +71,7 @@ public class EmployeesController {
     model.addAttribute("employee", employeeEntity);
     return "employee-card";
   }
+
   @GetMapping("/{id}/pdf")
   public String getEmployeeFile(Model model, @PathVariable int id) {
     EmployeeEntity employeeEntity = employeeService.findById(id);
@@ -91,7 +92,7 @@ public class EmployeesController {
                              @RequestParam("phones") String[] phones) throws IOException {
     List<String> codesList = Arrays.asList(codes);
     List<String> phonesList = Arrays.asList(phones);
-    employeeService.save(employeeMapper.toDomain(employee, codesList, phonesList), imageFile);
+    employeeService.save(employeeMapper.toDomain(employee, codesList, phonesList, imageFile));
     return "redirect:/employees";
   }
 }

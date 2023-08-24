@@ -15,10 +15,10 @@ public class UserService {
     return userRepository.findById(id).orElse(null);
   }
 
-  public UserEntity saveUser(UserEntity user) {
+  public void saveUser(UserEntity user) {
     BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
     user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-    return userRepository.save(user);
+    userRepository.save(user);
   }
 
   public UserEntity updateUser(UserEntity user) {
