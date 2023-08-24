@@ -27,7 +27,7 @@ CREATE TABLE cnaps_employee_entity
     cin              VARCHAR(255),
     address          VARCHAR(255),
     cnaps            VARCHAR(255),
-    children         INTEGER                                  NOT NULL,
+    children         INTEGER,
     category         VARCHAR(255),
     sex              VARCHAR(255),
     function         VARCHAR(255),
