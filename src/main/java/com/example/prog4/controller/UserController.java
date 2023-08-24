@@ -1,5 +1,7 @@
 package com.example.prog4.controller;
 
+import com.example.prog4.controller.Data.InputData.UserInput;
+import com.example.prog4.controller.Mapper.UserMapper;
 import com.example.prog4.entity.Employee.UserEntity;
 import com.example.prog4.service.JwtService;
 import com.example.prog4.service.UserService;
@@ -20,7 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
   private final UserService userService;
   private final JwtService jwtService;
-
+  private final UserMapper userMapper;
   private final AuthenticationManager authenticationManager;
 
   @GetMapping("/signup")
@@ -30,8 +32,8 @@ public class UserController {
   }
 
   @PostMapping("/createuser")
-  public String CreateUser(@ModelAttribute("user") UserEntity userEntity) {
-    userService.saveUser(userEntity);
+  public String CreateUser(@ModelAttribute("user") UserInput userInput) {
+    userService.saveUser(userMapper.toDomain(userInput));
     return "redirect:/login";
   }
 

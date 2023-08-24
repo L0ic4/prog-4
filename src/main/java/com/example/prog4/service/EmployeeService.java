@@ -24,8 +24,4 @@ public class EmployeeService {
     return employeeRepository.findAll(entitySpec);
   }
 
-  public void update(EmployeeEntity employee) {
-    employeeRepository.save(employee);
-  }
-
 }
