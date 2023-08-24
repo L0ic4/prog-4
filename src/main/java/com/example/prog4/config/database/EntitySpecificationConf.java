@@ -1,4 +1,4 @@
-package com.example.prog4.config;
+package com.example.prog4.config.database;
 
 import java.util.List;
 import net.kaczmarzyk.spring.data.jpa.web.SpecificationArgumentResolver;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableTransactionManagement
-public class EntityFilterConf implements WebMvcConfigurer {
+public class EntitySpecificationConf implements WebMvcConfigurer {
   @Override
   public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
     argumentResolvers.add(new SpecificationArgumentResolver());

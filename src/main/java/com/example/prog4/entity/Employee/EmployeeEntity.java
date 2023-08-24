@@ -42,6 +42,8 @@ public class EmployeeEntity implements Serializable {
   @Column(name = "end_to_end_id", unique = true, nullable = false)
   private Integer endToEndId;
 
+  private double salary;
+
   @NotBlank(message = "Firstname is mandatory")
   private String firstname;
   @NotBlank(message = "Lastname is mandatory")
