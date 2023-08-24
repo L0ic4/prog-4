@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Poppins:wght@600&display=swap');
+*{
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
+}
+
+a {
+    color: #5D6975;
+    text-decoration: underline;
+}
+
+body {
+    position: relative;
+    width: 21cm;
+    height: 29.7cm;
+    margin: 0 auto;
+    color: #001028;
+    background: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-family: Arial;
+}
+
+header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+#picture img{
+    width: 132px;
+    height: 170px;
+}
+
+#logo img {
+    width: 132px;
+}
+
+h1 {
+    border-top: 1px solid  #5D6975;
+    border-bottom: 1px solid  #5D6975;
+    color: #5D6975;
+    font-size: 2.4em;
+    line-height: 1.4em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
+    background-image: url('../img/dimension.png');
+}
+h2,h3{
+    color: #5D6975;;
+}
+
+
+.inline {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#project div,
+#company div {
+    white-space: nowrap;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+table tr:nth-child(2n-1) td {
+    background: #F5F5F5;
+}
+
+
+table .service,
+table .desc {
+    text-align: left;
+}
+
+table td {
+    padding: 20px;
+    text-align: right;
+}
+
+
+footer {
+    color: #5D6975;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #C1CED9;
+    padding: 8px 0;
+    text-align: center;
+}
+
+
+.container {
+    display: flex; /* or inline-flex */
+    justify-content: space-around;
+}

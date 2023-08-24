@@ -71,6 +71,12 @@ public class EmployeesController {
     model.addAttribute("employee", employeeEntity);
     return "employee-card";
   }
+  @GetMapping("/{id}/pdf")
+  public String getEmployeeFile(Model model, @PathVariable int id) {
+    EmployeeEntity employeeEntity = employeeService.findById(id);
+    model.addAttribute("employee", employeeEntity);
+    return "employee-file";
+  }
 
   @GetMapping("/add")
   public String showAddEmployeeForm(Model model) {

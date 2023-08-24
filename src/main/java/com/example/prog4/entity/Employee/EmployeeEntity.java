@@ -39,6 +39,12 @@ public class EmployeeEntity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
+  @Transient
+  private String cnaps;
+
+  @Transient
+  private Integer age;
+
   @Column(name = "end_to_end_id", unique = true, nullable = false)
   private Integer endToEndId;
 
@@ -63,9 +69,6 @@ public class EmployeeEntity implements Serializable {
   private String cin;
   @NotBlank(message = "Address is mandatory")
   private String address;
-
-  @Transient
-  private String cnaps;
 
   private int children;
 

@@ -4,6 +4,9 @@ import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.repository.Cnaps.EmployeeCnapsRepository;
 import com.example.prog4.repository.Employee.EmployeeRepository;
 import jakarta.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -55,4 +58,5 @@ public class RepositoryImpl implements Repository {
   public List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec) {
     return employeeRepository.findAll(spec);
   }
+
 }
