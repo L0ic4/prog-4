@@ -53,7 +53,7 @@ public class EmployeeEntity implements Serializable {
   @NotBlank(message = "Address is mandatory")
   private String address;
   private String cnaps;
-  private int children;
+  private Integer children;
 
   @Enumerated(EnumType.STRING)
   @ColumnTransformer(read = "CAST(category AS varchar)", write = "CAST(? AS category)")

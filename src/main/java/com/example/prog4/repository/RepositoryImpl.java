@@ -53,7 +53,6 @@ public class RepositoryImpl implements Repository {
 
   @Override
   public List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec) {
-    List<EmployeeEntity> employeeList = employeeRepository.findAll(spec);
-    return employeeList;
+    return employeeRepository.findAll(spec);
   }
 }
