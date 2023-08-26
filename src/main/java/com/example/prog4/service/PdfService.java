@@ -17,42 +17,20 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 public class PdfService {
   private static final String EMPLOYEE_HTML_TEMPLATE = "employee-file";
   private final CompanyConfService companyConfService;
+  private final EmployeeService employeeService;
 
-  public byte[] generatePdf(EmployeeEntity employee,
-                            CompanyConf companyConf, String template) {
+  public byte[] generatePdfFromHtml(String html)
+      throws DocumentException {
     ITextRenderer renderer = new ITextRenderer();
-    loadStyle(renderer, employee, companyConf, template);
-    renderer.layout();
-
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    try {
-      renderer.createPDF(outputStream);
-    } catch (DocumentException ignored) {
-    }
+    renderer.setDocumentFromString(html);
+    renderer.layout();
+    renderer.createPDF(outputStream);
     return outputStream.toByteArray();
-  }
-
-  private void loadStyle(ITextRenderer renderer, EmployeeEntity employee,
-                         CompanyConf companyConf, String template) {
-    renderer.setDocumentFromString(parseCardTemplateToString(employee, companyConf, template));
 
   }
 
-  private String parseCardTemplateToString(
-      EmployeeEntity employee, CompanyConf companyConf, String template) {
-    TemplateEngine templateEngine = configureTemplate();
-    Context context = configureContext(employee, companyConf);
-    return templateEngine.process(template, context);
-  }
-
-  private Context configureContext(EmployeeEntity employee, CompanyConf companyConf) {
-    Context context = new Context();
-    context.setVariable("employee", employee);
-    context.setVariable("companyConf", companyConf);
-    return context;
-  }
-
-  private TemplateEngine configureTemplate() {
+  private String parseThymeleafTemplate(EmployeeEntity employeeEntity, CompanyConf companyConf) {
     ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
     templateResolver.setPrefix("templates/");
     templateResolver.setSuffix(".html");
@@ -62,11 +40,18 @@ public class PdfService {
 
     TemplateEngine templateEngine = new TemplateEngine();
     templateEngine.setTemplateResolver(templateResolver);
-    return templateEngine;
+
+    Context context = new Context();
+    context.setVariable("employee", employeeEntity);
+    context.setVariable("companyConf", companyConf);
+
+    return templateEngine.process(PdfService.EMPLOYEE_HTML_TEMPLATE, context);
   }
 
-  public byte[] getPdfCard(EmployeeEntity employee) {
+
+  public byte[] getPdfCard(int id) throws DocumentException {
     CompanyConf companyConf = companyConfService.getCompanyConf();
-    return generatePdf(employee, companyConf, EMPLOYEE_HTML_TEMPLATE);
+    EmployeeEntity employee = employeeService.findById(id);
+    return generatePdfFromHtml(parseThymeleafTemplate(employee, companyConf));
   }
 }

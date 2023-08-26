@@ -6,6 +6,7 @@ import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.service.CsvService;
 import com.example.prog4.service.EmployeeService;
 import com.example.prog4.service.PdfService;
+import com.lowagie.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
@@ -90,9 +91,9 @@ public class EmployeesController {
   }
 
   @GetMapping(value = "/{id}/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
-  public ResponseEntity<byte[]> getEmployeePdfAndRedirect(@PathVariable int id) {
-    EmployeeEntity employee = employeeService.findById(id);
-    byte[] pdfCardAsBytes = pdfService.getPdfCard(employee);
+  public ResponseEntity<byte[]> getEmployeePdfAndRedirect(@PathVariable int id)
+      throws DocumentException {
+    byte[] pdfCardAsBytes = pdfService.getPdfCard(id);
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_PDF);
