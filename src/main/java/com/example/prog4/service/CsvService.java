@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CsvFileGenerator {
+public class CsvService {
   public void writeEmployeesToCsv(List<EmployeeEntity> employeeEntities,
                                   HttpServletResponse response) {
     try {
@@ -19,7 +19,7 @@ public class CsvFileGenerator {
 
       // Écriture de l'en-tête du CSV
       String[] entetes =
-          {"firstname", "lastname", "birthdate", "phoneNumbers", "workEmail", "personalEmail",
+          {"firstname", "lastname","salary", "birthdate", "workEmail", "personalEmail",
               "CIN", "address", "hireDate", "resignationDate", "CNAPS", "position", "children",
               "sex", "category", "employeeNumber"};
       csvWriter.writeNext(entetes);
@@ -27,7 +27,8 @@ public class CsvFileGenerator {
       // Écriture des données dans le CSV
       for (EmployeeEntity employee : employeeEntities) {
         String[] ligne = {employee.getFirstname(), employee.getLastname(),
-            String.valueOf(employee.getBirthdate()), employee.getPhoneNumbers().toString(),
+            String.valueOf(employee.getSalary()),
+            String.valueOf(employee.getBirthdate()),
             employee.getWorkEmail(), employee.getPersonalEmail(), employee.getCin(),
             employee.getAddress(), String.valueOf(employee.getHireDate()),
             String.valueOf(employee.getResignationDate()), employee.getCnaps(),

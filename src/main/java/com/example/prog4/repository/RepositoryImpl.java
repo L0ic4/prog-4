@@ -4,8 +4,10 @@ import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.repository.Cnaps.EmployeeCnapsRepository;
 import com.example.prog4.repository.Employee.EmployeeRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.Null;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -56,7 +58,27 @@ public class RepositoryImpl implements Repository {
 
   @Override
   public List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec) {
-    return employeeRepository.findAll(spec);
+    // Utilisez le repository approprié pour récupérer les entités EmployeeEntity
+    List<EmployeeEntity> employees = employeeRepository.findAll(spec);
+
+    // Pour chaque entité EmployeeEntity, récupérez l'entité EmployeeCnapsEntity correspondante
+    for (EmployeeEntity employee : employees) {
+      int endToEndId = employee.getEndToEndId();
+
+      // Utilisez l'endToEndId pour récupérer l'EmployeeCnapsEntity correspondante
+      com.example.prog4.entity.Cnaps.EmployeeEntity
+          cnapsEntity = employeeCnapsRepository.findById(endToEndId).orElse(null);
+
+      if (cnapsEntity != null) {
+        // Récupérez la valeur de la colonne "cnaps" de l'entité EmployeeCnapsEntity
+        String cnapsValue = cnapsEntity.getCnaps();
+
+        // Mettez à jour l'entité EmployeeEntity avec la valeur de la colonne "cnaps"
+        employee.setCnaps(cnapsValue);
+      }
+    }
+
+    return employees;
   }
 
   public int ageCalculator(LocalDate birthdate) {

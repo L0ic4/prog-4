@@ -3,8 +3,11 @@ package com.example.prog4.controller;
 import com.example.prog4.controller.Data.InputData.EmployeeInput;
 import com.example.prog4.controller.Mapper.EmployeeMapper;
 import com.example.prog4.entity.Employee.EmployeeEntity;
-import com.example.prog4.service.CsvFileGenerator;
+import com.example.prog4.service.CsvService;
 import com.example.prog4.service.EmployeeService;
+import com.example.prog4.service.PdfService;
+import com.lowagie.text.DocumentException;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -32,17 +35,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/employees")
 public class EmployeesController {
   private final EmployeeService employeeService;
-  private final CsvFileGenerator csvFileGenerator;
+  private final CsvService csvService;
+  private final PdfService pdfService;
   private final EmployeeMapper employeeMapper;
-
-//@GetMapping("/download")
-//public void downloadEmployees(HttpServletResponse response){
-//  Iterable<EmployeeEntity> employees;
-//  employees = employeeService.findAll(entitySpec);
-//    csvFileGenerator.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
-//
-//}
-
   @GetMapping
   public String getAllEmployees(
       @Join(path = "phoneNumbers", alias = "p")
@@ -65,6 +60,26 @@ public class EmployeesController {
     return "employee-list";
   }
 
+  @GetMapping("/csv")
+  public void downloadEmployees(
+      @Join(path = "phoneNumbers", alias = "p")
+      @And({
+          @Spec(path = "firstname", params = "firstname", spec = LikeIgnoreCase.class),
+          @Spec(path = "lastname", params = "lastname", spec = LikeIgnoreCase.class),
+          @Spec(path = "sex", params = "sex", spec = LikeIgnoreCase.class),
+          @Spec(path = "position", params = "position", spec = LikeIgnoreCase.class),
+          @Spec(path = "hireDate", params = "hire", spec = GreaterThanOrEqual.class),
+          @Spec(path = "resignationDate", params = "resignation", spec = GreaterThanOrEqual.class),
+          @Spec(path = "p.phoneNumber", params = "phone", spec = LikeIgnoreCase.class),
+          @Spec(path = "p.countryCode", params = "code", spec = Like.class)
+      })
+      Specification<EmployeeEntity> entitySpec, Model model,
+      HttpServletResponse response){
+    Iterable<EmployeeEntity> employees;
+    employees = employeeService.findAll(entitySpec);
+    csvService.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
+  }
+
   @GetMapping("/{id}")
   public String getEmployeeById(Model model, @PathVariable int id) {
     EmployeeEntity employeeEntity = employeeService.findById(id);
@@ -73,10 +88,10 @@ public class EmployeesController {
   }
 
   @GetMapping("/{id}/pdf")
-  public String getEmployeeFile(Model model, @PathVariable int id) {
-    EmployeeEntity employeeEntity = employeeService.findById(id);
-    model.addAttribute("employee", employeeEntity);
-    return "employee-file";
+  public void getEmployeeFile(Model model, @PathVariable int id)
+      throws DocumentException, IOException {
+    String html = pdfService.parseThymeleafTemplate(id);
+    pdfService.generatePdfFromHtml(html);
   }
 
   @GetMapping("/add")
