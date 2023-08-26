@@ -24,4 +24,8 @@ public class EmployeeService {
     return employeeRepository.findAll(entitySpec);
   }
 
+  public Iterable<EmployeeEntity> findAllWithoutCnaps(Specification<EmployeeEntity> entitySpec) {
+    return employeeRepository.findAllWithoutCnaps(entitySpec);
+  }
+
 }

@@ -19,7 +19,7 @@ public class CsvService {
 
       // Écriture de l'en-tête du CSV
       String[] entetes =
-          {"firstname", "lastname","salary", "birthdate", "workEmail", "personalEmail",
+          {"firstname", "lastname", "salary", "birthdate", "workEmail", "personalEmail",
               "CIN", "address", "hireDate", "resignationDate", "CNAPS", "position", "children",
               "sex", "category", "employeeNumber"};
       csvWriter.writeNext(entetes);

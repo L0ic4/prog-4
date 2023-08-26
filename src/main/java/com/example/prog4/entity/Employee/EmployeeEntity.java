@@ -69,7 +69,6 @@ public class EmployeeEntity implements Serializable {
   @NotBlank(message = "Address is mandatory")
   private String address;
 
-  @NotBlank(message = "Children is mandatory")
   private int children;
 
   @Column(name = "employee_number")

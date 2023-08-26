@@ -6,7 +6,6 @@ import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.service.CsvService;
 import com.example.prog4.service.EmployeeService;
 import com.example.prog4.service.PdfService;
-import com.lowagie.text.DocumentException;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,6 +18,10 @@ import net.kaczmarzyk.spring.data.jpa.web.annotation.And;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Join;
 import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +41,7 @@ public class EmployeesController {
   private final CsvService csvService;
   private final PdfService pdfService;
   private final EmployeeMapper employeeMapper;
+
   @GetMapping
   public String getAllEmployees(
       @Join(path = "phoneNumbers", alias = "p")
@@ -52,10 +56,8 @@ public class EmployeesController {
           @Spec(path = "p.countryCode", params = "code", spec = Like.class)
       })
       Specification<EmployeeEntity> entitySpec, Model model) {
-
-    Iterable<EmployeeEntity> employees = employeeService.findAll(entitySpec);
+    Iterable<EmployeeEntity> employees = employeeService.findAllWithoutCnaps(entitySpec);
     model.addAttribute("employee", new EmployeeEntity());
-
     model.addAttribute("employees", employees);
     return "employee-list";
   }
@@ -73,8 +75,8 @@ public class EmployeesController {
           @Spec(path = "p.phoneNumber", params = "phone", spec = LikeIgnoreCase.class),
           @Spec(path = "p.countryCode", params = "code", spec = Like.class)
       })
-      Specification<EmployeeEntity> entitySpec, Model model,
-      HttpServletResponse response){
+      Specification<EmployeeEntity> entitySpec,
+      HttpServletResponse response) {
     Iterable<EmployeeEntity> employees;
     employees = employeeService.findAll(entitySpec);
     csvService.writeEmployeesToCsv((List<EmployeeEntity>) employees, response);
@@ -87,12 +89,19 @@ public class EmployeesController {
     return "employee-card";
   }
 
-  @GetMapping("/{id}/pdf")
-  public void getEmployeeFile(Model model, @PathVariable int id)
-      throws DocumentException, IOException {
-    String html = pdfService.parseThymeleafTemplate(id);
-    pdfService.generatePdfFromHtml(html);
+  @GetMapping(value = "/{id}/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
+  public ResponseEntity<byte[]> getEmployeePdfAndRedirect(@PathVariable int id) {
+    EmployeeEntity employee = employeeService.findById(id);
+    byte[] pdfCardAsBytes = pdfService.getPdfCard(employee);
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_PDF);
+    headers.setContentDispositionFormData("attachment", "employee.pdf");
+    headers.setContentLength(pdfCardAsBytes.length);
+
+    return new ResponseEntity<>(pdfCardAsBytes, headers, HttpStatus.OK);
   }
+
 
   @GetMapping("/add")
   public String showAddEmployeeForm(Model model) {

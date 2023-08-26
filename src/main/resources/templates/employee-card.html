@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,8 +16,7 @@
             <img alt=""
                  class="rounded-full mx-auto absolute -top-20 w-32 h-32 shadow-md border-4 border-white transition duration-200 transform hover:scale-110"
                  src=""
-                 th:src="${employee.imageBase64}">
-            <!--            'data:image/jpeg;base64,' +-->
+                 th:src="'data:image/jpeg;base64,' +${employee.imageBase64}">
         </div>
         <div class="mt-16">
             <h1 class="font-bold text-center text-3xl text-gray-900" th:text="${employee.firstname}"></h1>

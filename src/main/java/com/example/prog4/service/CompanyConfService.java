@@ -41,7 +41,7 @@ public class CompanyConfService {
   public void crupdateCompanyConf(CompanyConf companyConf, MultipartFile imageFile)
       throws IOException {
 
-    Optional<CompanyConf> existingConf = companyConfRepository.findById(companyConf.getId());
+    Optional<CompanyConf> existingConf = companyConfRepository.findById(COMPANY_CONF_ID);
 
     if (existingConf.isPresent()) {
       CompanyConf existing = existingConf.get();

@@ -4,10 +4,8 @@ import com.example.prog4.entity.Employee.EmployeeEntity;
 import com.example.prog4.repository.Cnaps.EmployeeCnapsRepository;
 import com.example.prog4.repository.Employee.EmployeeRepository;
 import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.Null;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -54,6 +52,11 @@ public class RepositoryImpl implements Repository {
   @Override
   public EmployeeEntity findFirstByOrderByEmployeeNumberDesc() {
     return employeeRepository.findFirstByOrderByEmployeeNumberDesc();
+  }
+
+  @Override
+  public List<EmployeeEntity> findAllWithoutCnaps(Specification<EmployeeEntity> spec) {
+    return employeeRepository.findAll(spec);
   }
 
   @Override

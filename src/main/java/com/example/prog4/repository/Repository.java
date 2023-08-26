@@ -16,4 +16,6 @@ public interface Repository {
   EmployeeEntity findFirstByOrderByEmployeeNumberDesc();
 
   List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec);
+
+  List<EmployeeEntity> findAllWithoutCnaps(Specification<EmployeeEntity> spec);
 }
