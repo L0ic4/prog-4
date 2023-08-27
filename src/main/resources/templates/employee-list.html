@@ -8,77 +8,97 @@
 <body>
 <div class="flex min-h-screen flex-row bg-gray-100 text-gray-800">
     <div th:replace="fragments/sidebar :: sidebar"></div>
-    <div class="my-24 container w-full md:w-4/5 xl:w-3/5  mx-auto px-2">
-
-            <div class="container w-full mx-auto">
-                    <div class="bg-white rounded p-4 px-4 md:p-8 mb-6">
-                            <div class="lg:col-span-2">
-                                <form method="get" th:action="@{/employees}">
-                                    <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-                                        <div class="md:col-span-1">
-                                            <label for="firstname">Firstname</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="firstname"
-                                                   name="firstname"
-                                                   placeholder="" type="search"/>
-                                        </div>
-
-                                        <div class="md:col-span-1">
-                                            <label for="lastname">Lastname</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="lastname"
-                                                   name="lastname"
-                                                   placeholder="" type="search"/>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="sex">Sex:</label>
-                                            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                                    id="sex"
-                                                <option th:text="Male" th:value="M"></option>
-                                                <option th:text="Female" th:value="F"></option>
-                                            </select>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="position">position</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="position"
-                                                   name="position"
-                                                   placeholder="" type="search"/>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="hire">hire</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="hire"
-                                                   name="hire"
-                                                   placeholder="" type="date"/>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="resignation">resignation</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="resignation"
-                                                   name="resignation"
-                                                   placeholder="" type="date"/>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="phone">phone number</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
-                                                   name="phone"
-                                                   placeholder="" type="search"/>
-                                        </div>
-                                        <div class="md:col-span-1">
-                                            <label for="code">country code</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="code"
-                                                   name="code"
-                                                   placeholder="" type="search"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="md:col-span-5 text-right m-5">
-                                        <div class="inline-flex items-end">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                                    type="submit">
-                                                Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+    <div class="my-20 container w-full mx-auto">
+        <div class="container">
+            <div class="bg-white rounded p-6 mb-6">
+                <div class="lg:col-span-2">
+                    <form method="get" th:action="@{/employees}">
+                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
+                            <div class="md:col-span-2">
+                                <label for="firstname">Firstname</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="firstname"
+                                       name="firstname"
+                                       th:value="${param.firstname}" type="search"/>
                             </div>
-                    </div>
+
+                            <div class="md:col-span-2">
+                                <label for="lastname">Lastname</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="lastname"
+                                       name="lastname"
+                                       th:value="${param.lastname}" type="search"/>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="sex">Sex:</label>
+                                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        id="sex"
+                                        name="sex">
+                                    <option th:value="${param.sex}">[[${param.sex}]]</option>
+                                    <option th:text="Male" th:value="M"></option>
+                                    <option th:text="Female" th:value="F"></option>
+                                </select>
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <label for="function">Function:</label>
+                                <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        id="function"
+                                        name="function">
+                                    <option th:value="${param.function}">[[${param.function}]]</option>
+                                    <option th:text="MANAGEMENT" th:value="'MANAGEMENT'"></option>
+                                    <option th:text="HR" th:value="'HR'"></option>
+                                    <option th:text="ACCOUNTING" th:value="'ACCOUNTING'"></option>
+                                    <option th:text="IT" th:value="'IT'"></option>
+                                    <option th:text="MARKETING" th:value="'MARKETING'"></option>
+                                    <option th:text="LEGAL" th:value="'LEGAL'"></option>
+                                    <option th:text="DESIGN" th:value="'DESIGN'"></option>
+                                    <option th:text="COMMUNICATION" th:value="'COMMUNICATION'"></option>
+                                    <option th:text="SECURITY" th:value="'SECURITY'"></option>
+                                    <option th:text="CONSULTANT" th:value="'CONSULTANT'"></option>
+                                    <option th:text="TRANSPORTATION" th:value="'TRANSPORTATION'"></option>
+                                </select>
+                            </div>
+
+                            <div class="md:col-span-1">
+                                <label for="hire">hire</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="hire"
+                                       name="hire"
+                                       th:value="${param.hire}" type="date"/>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="resignation">resignation</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="resignation"
+                                       name="resignation"
+                                       th:value="${param.resignation}" type="date"/>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="phone">phone number</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
+                                       name="phone"
+                                       th:value="${param.phone}" type="search"/>
+                            </div>
+                            <div class="md:col-span-1">
+                                <label for="code">country code</label>
+                                <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="code"
+                                       name="code"
+                                       th:value="${param.code}" type="search"/>
+                            </div>
+                        </div>
+                        <div class="m-5 flex flex-row flex-nowrap justify-center gap-4">
+                            <button class="p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                                    type="submit">
+                                FILTER
+                            </button>
+                            <a class="p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                               th:href="@{/employees}">CLEAR FILTER</a>
+                            <button class="p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                                    formaction="/employees/csv">DOWNLOAD CSV
+                            </button>
+                            <a class="p-4 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded"
+                               th:href="@{/employees/add}">ADD EMPLOYEE</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
         </div>
         <div class=" overflow-x-auto sm:rounded-lg">
@@ -124,14 +144,6 @@
                                 Resignation Date
                             </div>
                         </div>
-                    </th>
-                    <th class="px-6 py-3" scope="col">
-                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                           th:href="@{'/employees/add'}">Add</a>
-                    </th>
-                    <th class="px-6 py-3" scope="col">
-                        <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                           th:href="@{'/employees/csv'}">Download CSV</a>
                     </th>
                 </tr>
                 </thead>
