@@ -31,7 +31,7 @@ public class CompanyConfController {
   public String crupdateCompanyConf(@ModelAttribute("companyConf") CompanyConfInput companyConf,
                                     @RequestParam("imageInput") MultipartFile imageFile)
       throws IOException {
-    companyConfService.crupdateCompanyConf(configMapper.toDomain(companyConf,imageFile));
-    return "redirect:/employees";
+    companyConfService.crupdateCompanyConf(configMapper.toDomain(companyConf, imageFile));
+    return "redirect:/conf";
   }
 }

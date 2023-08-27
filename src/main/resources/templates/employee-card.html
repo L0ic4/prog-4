@@ -24,11 +24,9 @@
             <p class="text-center text-sm text-gray-400 font-medium"
                th:text="${companyConfGlobal.getCompanyName()}"></p>
             <p>
-                        <span>
-                        </span>
             </p>
             <div class="w-full">
-                <h3 class="font-medium text-gray-900 text-left px-6" th:text="${employee.employeeNumber}"></h3>
+                <h3 class="font-medium text-gray-900 text-left px-6 m-8" th:text="${employee.employeeNumber}">azer</h3>
                 <div class="mt-5 w-full flex flex-col items-center overflow-hidden text-sm">
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150"
                        href="#">
@@ -50,7 +48,7 @@
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
                              th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
-                        Phone Numbers :
+                        Phone :
                         <td>
                             <ul>
                                 <li th:each="phoneNumber : ${employee.phoneNumbers}"
@@ -78,7 +76,7 @@
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
                              th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
-                        CIN numbers :
+                        CIN :
                         <span class="text-gray-500 text-xs" th:text="${employee.cin}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"
@@ -106,7 +104,7 @@
                        href="#">
                         <img alt="" class="rounded-full h-6 shadow-md inline-block mr-2"
                              th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
-                        CNAPS numbers :
+                        CNAPS :
                         <span class="text-gray-500 text-xs" th:text="${employee.cnaps}"></span>
                     </a>
                     <a class="w-full border-t border-gray-100 text-gray-600 py-4 pl-6 pr-3 w-full block hover:bg-gray-100 transition duration-150 overflow-hidden"

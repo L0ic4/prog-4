@@ -57,7 +57,7 @@ public class EmployeeMapper {
     addImage(employeeEntity, imageFile);
 
     employeeEntity.setEmployeeNumber(generateMatricule());
-    employeeEntity.setFirstname(employeeInput.getFirstname());
+    employeeEntity.setFirstname(employeeInput.getFirstname().toUpperCase());
     employeeEntity.setLastname(employeeInput.getLastname());
     employeeEntity.setSalary(Double.parseDouble(employeeInput.getSalary()));
     employeeEntity.setWorkEmail(employeeInput.getWorkEmail());

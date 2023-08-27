@@ -27,7 +27,7 @@ public class CompanyConf implements Serializable {
   @Column(name = "company_name")
   private String companyName;
 
-  @Column(name = "company_description")
+  @Column(name = "company_description", columnDefinition = "TEXT")
   private String companyDescription;
 
   @Column(name = "company_phone")

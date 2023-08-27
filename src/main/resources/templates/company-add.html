@@ -14,10 +14,18 @@
             <div>
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-                        <div class="text-gray-600">
-                            <img alt="logo" class="w-28 h-20"
+
+                        <div class="flex flex-row gap-4 justify-around items-center text-gray-600 mb-6 lg:flex-col">
+                            <img alt="logo" class="mb-4 w-28 h-20"
                                  th:src="'data:image/jpeg;base64,' + ${companyConfGlobal.getCompanyLogoBase64()}">
-                            <p class="font-medium text-lg">Update Company Info</p>
+                            <blockquote class="text-xl italic font-semibold text-gray-900">
+                                <svg aria-hidden="true" class="w-8 h-8 text-gray-400 dark:text-gray-600 mb-4"
+                                     fill="currentColor" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"/>
+                                </svg>
+                                <p class="text-center italic text-lg"
+                                   th:text="${companyConfGlobal.getCompanySlogan()}"></p>
+                            </blockquote>
                         </div>
 
                         <div class="lg:col-span-2">
@@ -31,7 +39,7 @@
                                                th:field="*{companyName}"
                                                th:placeholder="${companyConfGlobal.getCompanyName()}"
                                                type="text"
-                                                                                       />
+                                        />
                                     </div>
                                     <div class="md:col-span-5">
                                         <label class="block mb-2 text-sm font-medium text-gray-900" for="message">Company
@@ -39,17 +47,17 @@
                                         <textarea
                                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500"
                                                 id="message"
-                                                th:placeholder="${companyConfGlobal.getCompanyDescription()}"
                                                 rows="4"
                                                 th:field="*{companyDescription}"
+                                                th:placeholder="${companyConfGlobal.getCompanyDescription()}"
                                         ></textarea>
                                     </div>
                                     <div class="md:col-span-3">
                                         <label for="email">Email Address</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="email"
                                                name="email"
-                                               th:placeholder="${companyConfGlobal.getCompanyEmail()}"
                                                th:field="*{companyEmail}"
+                                               th:placeholder="${companyConfGlobal.getCompanyEmail()}"
                                                type="text"/>
                                     </div>
 
@@ -57,8 +65,8 @@
                                         <label for="phone">Company Phone</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
                                                name="phone"
-                                               th:placeholder="${companyConfGlobal.getCompanyPhone()}"
                                                th:field="*{companyPhone}"
+                                               th:placeholder="${companyConfGlobal.getCompanyPhone()}"
                                                type="tel"
                                         />
                                     </div>
@@ -67,7 +75,8 @@
                                         <label for="address">Address / Street</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="address"
                                                name="address"
-                                               th:placeholder="${companyConfGlobal.getCompanyAddress()}" th:field="*{companyAddress}"
+                                               th:field="*{companyAddress}"
+                                               th:placeholder="${companyConfGlobal.getCompanyAddress()}"
                                                type="text"
 
                                         />
@@ -78,9 +87,9 @@
                                         <textarea
                                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500"
                                                 id="slogan"
-                                                th:placeholder="${companyConfGlobal.getCompanySlogan()}"
                                                 rows="4"
                                                 th:field="*{companySlogan}"
+                                                th:placeholder="${companyConfGlobal.getCompanySlogan()}"
                                         ></textarea>
                                     </div>
 
@@ -88,8 +97,8 @@
                                         <label for="NIF">NIF</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="NIF"
                                                name="NIF"
-                                               th:placeholder="${companyConfGlobal.getNIF()}"
                                                th:field="*{NIF}"
+                                               th:placeholder="${companyConfGlobal.getNIF()}"
                                                type="text">
                                     </div>
 
@@ -97,14 +106,16 @@
                                         <label for="STAT">STAT</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="STAT"
                                                name="STAT"
-                                               th:placeholder="${companyConfGlobal.getSTAT()}" th:field="*{STAT}" type="text">
+                                               th:field="*{STAT}" th:placeholder="${companyConfGlobal.getSTAT()}"
+                                               type="text">
                                     </div>
 
                                     <div class="md:col-span-1">
                                         <label for="RCS">RCS</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="RCS"
                                                name="RCS"
-                                               th:placeholder="${companyConfGlobal.getRCS()}" th:field="*{RCS}" type="text">
+                                               th:field="*{RCS}" th:placeholder="${companyConfGlobal.getRCS()}"
+                                               type="text">
                                     </div>
 
                                     <div class="col-span-full">
@@ -137,7 +148,8 @@
 
                                 <div class="md:col-span-5 text-right">
                                     <div class="inline-flex items-end">
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+
+                                        <button class="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                                 type="submit">
                                             Submit
                                         </button>

@@ -2,12 +2,9 @@ package com.example.prog4.service;
 
 import com.example.prog4.entity.Employee.CompanyConf;
 import com.example.prog4.repository.Employee.CompanyConfRepository;
-import java.io.IOException;
-import java.util.Base64;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +18,6 @@ public class CompanyConfService {
   }
 
   public void crupdateCompanyConf(CompanyConf companyConf) {
-      companyConfRepository.save(companyConf);
-    }
+    companyConfRepository.save(companyConf);
+  }
 }
