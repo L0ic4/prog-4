@@ -29,9 +29,9 @@
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="full_name"
                                                name="full_name"
                                                th:field="*{companyName}"
+                                               th:placeholder="${companyConfGlobal.getCompanyName()}"
                                                type="text"
-                                               value=""
-                                        />
+                                                                                       />
                                     </div>
                                     <div class="md:col-span-5">
                                         <label class="block mb-2 text-sm font-medium text-gray-900" for="message">Company
@@ -39,7 +39,7 @@
                                         <textarea
                                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500"
                                                 id="message"
-                                                placeholder="Write your thoughts here..."
+                                                th:placeholder="${companyConfGlobal.getCompanyDescription()}"
                                                 rows="4"
                                                 th:field="*{companyDescription}"
                                         ></textarea>
@@ -48,29 +48,27 @@
                                         <label for="email">Email Address</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="email"
                                                name="email"
-                                               placeholder="email@domain.com"
+                                               th:placeholder="${companyConfGlobal.getCompanyEmail()}"
                                                th:field="*{companyEmail}"
-                                               type="text"
-                                               value=""/>
+                                               type="text"/>
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="phone">Company Phone</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="phone"
                                                name="phone"
-                                               placeholder="+261"
+                                               th:placeholder="${companyConfGlobal.getCompanyPhone()}"
                                                th:field="*{companyPhone}"
                                                type="tel"
-                                               value=""/>
+                                        />
                                     </div>
 
                                     <div class="md:col-span-3">
                                         <label for="address">Address / Street</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="address"
                                                name="address"
-                                               placeholder="" th:field="*{companyAddress}"
+                                               th:placeholder="${companyConfGlobal.getCompanyAddress()}" th:field="*{companyAddress}"
                                                type="text"
-                                               value=""
 
                                         />
                                     </div>
@@ -80,7 +78,7 @@
                                         <textarea
                                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:focus:border-blue-500"
                                                 id="slogan"
-                                                placeholder="Write your thoughts here..."
+                                                th:placeholder="${companyConfGlobal.getCompanySlogan()}"
                                                 rows="4"
                                                 th:field="*{companySlogan}"
                                         ></textarea>
@@ -90,26 +88,23 @@
                                         <label for="NIF">NIF</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="NIF"
                                                name="NIF"
-                                               placeholder=""
+                                               th:placeholder="${companyConfGlobal.getNIF()}"
                                                th:field="*{NIF}"
-                                               type="text"
-                                               value=""/>
+                                               type="text">
                                     </div>
 
                                     <div class="md:col-span-2">
                                         <label for="STAT">STAT</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="STAT"
                                                name="STAT"
-                                               placeholder="" th:field="*{STAT}" type="text"
-                                               value=""/>
+                                               th:placeholder="${companyConfGlobal.getSTAT()}" th:field="*{STAT}" type="text">
                                     </div>
 
                                     <div class="md:col-span-1">
                                         <label for="RCS">RCS</label>
                                         <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="RCS"
                                                name="RCS"
-                                               placeholder="" th:field="*{RCS}" type="text"
-                                               value=""/>
+                                               th:placeholder="${companyConfGlobal.getRCS()}" th:field="*{RCS}" type="text">
                                     </div>
 
                                     <div class="col-span-full">
@@ -128,7 +123,7 @@
                                                            for="imageInput">
                                                         <span>Upload a file</span>
                                                         <input accept="image/*" class="sr-only" id="imageInput"
-                                                               name="image"
+                                                               name="imageInput"
                                                                type="file">
                                                     </label>
                                                     <p class="pl-1">or drag and drop</p>

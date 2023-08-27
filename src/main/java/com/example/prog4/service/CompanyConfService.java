@@ -17,74 +17,10 @@ public class CompanyConfService {
 
   public CompanyConf getCompanyConf() {
     Optional<CompanyConf> existingConf = companyConfRepository.findById(COMPANY_CONF_ID);
-    if (existingConf.isPresent()) {
-      return existingConf.get();
-    }
-    CompanyConf companyConf = new CompanyConf();
-    companyConf.setId(COMPANY_CONF_ID);
-    companyConf.setCompanyName("Company Name");
-    companyConf.setCompanyDescription("Company Description");
-    companyConf.setCompanyPhone("Company Phone");
-    companyConf.setCompanySlogan("Company Slogan");
-    companyConf.setCompanyEmail("Company Email");
-    companyConf.setCompanyAddress("Company Address");
-    companyConf.setNIF("NIF");
-    companyConf.setSTAT("STAT");
-    companyConf.setRCS("RCS");
-    companyConf.setCompanyLogoBase64(
-        null
-    );
-
-    return companyConf;
+    return existingConf.orElseGet(CompanyConf::new);
   }
 
-  public void crupdateCompanyConf(CompanyConf companyConf, MultipartFile imageFile)
-      throws IOException {
-
-    Optional<CompanyConf> existingConf = companyConfRepository.findById(COMPANY_CONF_ID);
-
-    if (existingConf.isPresent()) {
-      CompanyConf existing = existingConf.get();
-
-      if (companyConf.getCompanyName() != null) {
-        existing.setCompanyName(companyConf.getCompanyName());
-      }
-      if (companyConf.getCompanyDescription() != null) {
-        existing.setCompanyDescription(companyConf.getCompanyDescription());
-      }
-      if (companyConf.getCompanyPhone() != null) {
-        existing.setCompanyPhone(companyConf.getCompanyPhone());
-      }
-      if (companyConf.getCompanySlogan() != null) {
-        existing.setCompanySlogan(companyConf.getCompanySlogan());
-      }
-      if (companyConf.getCompanyEmail() != null) {
-        existing.setCompanyEmail(companyConf.getCompanyEmail());
-      }
-      if (companyConf.getCompanyAddress() != null) {
-        existing.setCompanyAddress(companyConf.getCompanyAddress());
-      }
-      if (companyConf.getNIF() != null) {
-        existing.setNIF(companyConf.getNIF());
-      }
-      if (companyConf.getSTAT() != null) {
-        existing.setSTAT(companyConf.getSTAT());
-      }
-      if (companyConf.getRCS() != null) {
-        existing.setRCS(companyConf.getRCS());
-      }
-
-      if (imageFile != null && !imageFile.isEmpty()) {
-        byte[] imageBytes = imageFile.getBytes();
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-        existing.setCompanyLogoBase64(base64Image);
-      }
-
-    } else {
-      byte[] imageBytes = imageFile.getBytes();
-      String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-      companyConf.setCompanyLogoBase64(base64Image);
+  public void crupdateCompanyConf(CompanyConf companyConf) {
       companyConfRepository.save(companyConf);
     }
-  }
 }
