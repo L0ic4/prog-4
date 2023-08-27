@@ -49,7 +49,7 @@ public class PdfService {
   }
 
 
-  public byte[] getPdfCard(int id) throws DocumentException {
+  public byte[] getPdf(int id) throws DocumentException {
     CompanyConf companyConf = companyConfService.getCompanyConf();
     EmployeeEntity employee = employeeService.findById(id);
     return generatePdfFromHtml(parseThymeleafTemplate(employee, companyConf));

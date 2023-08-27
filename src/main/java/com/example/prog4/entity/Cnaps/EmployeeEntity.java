@@ -26,9 +26,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity(name = "cnaps_employee_entity")
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmployeeEntity implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

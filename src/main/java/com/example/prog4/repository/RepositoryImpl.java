@@ -50,11 +50,6 @@ public class RepositoryImpl implements Repository {
   }
 
   @Override
-  public EmployeeEntity findFirstByOrderByEmployeeNumberDesc() {
-    return employeeRepository.findFirstByOrderByEmployeeNumberDesc();
-  }
-
-  @Override
   public List<EmployeeEntity> findAllWithoutCnaps(Specification<EmployeeEntity> spec) {
     return employeeRepository.findAll(spec);
   }

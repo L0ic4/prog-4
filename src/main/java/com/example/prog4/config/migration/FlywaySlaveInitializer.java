@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration;
 public class FlywaySlaveInitializer {
 
   @Value("${spring.datasource.url}")
-  String firstDatasourceUrl;
+  String employeeDatasourceUrl;
   @Value("${spring.datasource.username}")
   String firstDatasourceUser;
   @Value("${spring.datasource.password}")
   String firstDatasourcePassword;
 
   @Value("${spring.datasource.cnaps.url}")
-  String secondDatasourceUrl;
+  String cnapsDatasourceUrl;
   @Value("${spring.datasource.cnaps.username}")
   String secondDatasourceUser;
   @Value("${spring.datasource.cnaps.password}")
@@ -26,12 +26,12 @@ public class FlywaySlaveInitializer {
   @PostConstruct
   public void migrateFlyway() {
     Flyway flywayIntegration = Flyway.configure()
-        .dataSource(firstDatasourceUrl, firstDatasourceUser, firstDatasourcePassword)
+        .dataSource(employeeDatasourceUrl, firstDatasourceUser, firstDatasourcePassword)
         .locations("filesystem:./src/main/resources/db/migration/employeedb")
         .load();
 
     Flyway flywayPhenom = Flyway.configure()
-        .dataSource(secondDatasourceUrl, secondDatasourceUser, secondDatasourcePassword)
+        .dataSource(cnapsDatasourceUrl, secondDatasourceUser, secondDatasourcePassword)
         .locations("filesystem:./src/main/resources/db/migration/cnapsdb")
         .load();
 

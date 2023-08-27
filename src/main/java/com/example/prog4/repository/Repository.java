@@ -13,8 +13,6 @@ public interface Repository {
 
   Optional<EmployeeEntity> findById(int id);
 
-  EmployeeEntity findFirstByOrderByEmployeeNumberDesc();
-
   List<EmployeeEntity> findAll(Specification<EmployeeEntity> spec);
 
   List<EmployeeEntity> findAllWithoutCnaps(Specification<EmployeeEntity> spec);

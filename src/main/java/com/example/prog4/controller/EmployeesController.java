@@ -92,7 +92,7 @@ public class EmployeesController {
   @GetMapping(value = "/{id}/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
   public ResponseEntity<byte[]> getEmployeePdfAndRedirect(@PathVariable int id)
       throws DocumentException {
-    byte[] pdfCardAsBytes = pdfService.getPdfCard(id);
+    byte[] pdfCardAsBytes = pdfService.getPdf(id);
 
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_PDF);

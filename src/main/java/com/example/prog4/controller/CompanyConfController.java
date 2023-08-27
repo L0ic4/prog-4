@@ -23,7 +23,8 @@ public class CompanyConfController {
 
   @GetMapping("/conf")
   public String showAddCompanyConfForm(Model model) {
-    model.addAttribute("companyConf", new CompanyConf());
+    CompanyConf companyConf = companyConfService.getCompanyConf();
+    model.addAttribute("companyConf", companyConf);
     return "company-add";
   }
 
