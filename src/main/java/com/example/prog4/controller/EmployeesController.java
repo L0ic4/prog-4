@@ -58,7 +58,6 @@ public class EmployeesController {
       })
       Specification<EmployeeEntity> entitySpec, Model model) {
     Iterable<EmployeeEntity> employees = employeeService.findAllWithoutCnaps(entitySpec);
-    model.addAttribute("employee", new EmployeeEntity());
     model.addAttribute("employees", employees);
     return "employee-list";
   }

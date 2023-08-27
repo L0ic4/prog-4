@@ -13,7 +13,7 @@
             <div class="container w-full mx-auto">
                     <div class="bg-white rounded p-4 px-4 md:p-8 mb-6">
                             <div class="lg:col-span-2">
-                                <form enctype="multipart/form-data" method="get" th:action="@{/employees}">
+                                <form method="get" th:action="@{/employees}">
                                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                         <div class="md:col-span-1">
                                             <label for="firstname">Firstname</label>
@@ -28,12 +28,13 @@
                                                    name="lastname"
                                                    placeholder="" type="search"/>
                                         </div>
-
                                         <div class="md:col-span-1">
-                                            <label for="sex">sex</label>
-                                            <input class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="sex"
-                                                   name="sex"
-                                                   placeholder="" type="search"/>
+                                            <label for="sex">Sex:</label>
+                                            <select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                                    id="sex"
+                                                <option th:text="Male" th:value="M"></option>
+                                                <option th:text="Female" th:value="F"></option>
+                                            </select>
                                         </div>
                                         <div class="md:col-span-1">
                                             <label for="position">position</label>
@@ -130,7 +131,7 @@
                     </th>
                     <th class="px-6 py-3" scope="col">
                         <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                           th:href="@{'/employees?download=true'}">Download CSV</a>
+                           th:href="@{'/employees/csv'}">Download CSV</a>
                     </th>
                 </tr>
                 </thead>
