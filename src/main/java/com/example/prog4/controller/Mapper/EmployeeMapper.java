@@ -59,7 +59,7 @@ public class EmployeeMapper {
     employeeEntity.setEmployeeNumber(generateMatricule());
     employeeEntity.setFirstname(employeeInput.getFirstname());
     employeeEntity.setLastname(employeeInput.getLastname());
-    employeeEntity.setSalary(employeeInput.getSalary());
+    employeeEntity.setSalary(Double.parseDouble(employeeInput.getSalary()));
     employeeEntity.setWorkEmail(employeeInput.getWorkEmail());
     employeeEntity.setPersonalEmail(employeeInput.getPersonalEmail());
     employeeEntity.setCin(employeeInput.getCin());

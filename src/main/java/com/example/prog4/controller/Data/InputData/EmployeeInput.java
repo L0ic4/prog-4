@@ -13,7 +13,7 @@ import lombok.ToString;
 public class EmployeeInput {
   private String firstname;
   private String lastname;
-  private Integer salary;
+  private String salary;
   private String workEmail;
   private String personalEmail;
   private String cin;
