@@ -19,8 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class EmployeeMapper {
   private final EmployeeRepository employeeRepository;
 
-  private static EmployeeEntity addPhone(EmployeeEntity employeeEntity, List<String> phoneNumbers,
-                                         List<String> countryCodes) {
+  private static void addPhone(EmployeeEntity employeeEntity, List<String> phoneNumbers,
+                               List<String> countryCodes) {
 
     // Vérifier si les listes phoneNumbers et countryCodes ont la même taille
     if (phoneNumbers.size() != countryCodes.size()) {
@@ -37,15 +37,13 @@ public class EmployeeMapper {
       phoneNumber.setCountryCode(countryCodeStr);
       employeeEntity.addPhoneNumber(phoneNumber);
     }
-    return employeeEntity;
   }
 
-  private static EmployeeEntity addImage(EmployeeEntity employeeEntity, MultipartFile imageFile)
+  private static void addImage(EmployeeEntity employeeEntity, MultipartFile imageFile)
       throws IOException {
     byte[] imageBytes = imageFile.getBytes();
     String base64Image = Base64.getEncoder().encodeToString(imageBytes);
     employeeEntity.setImageBase64(base64Image);
-    return employeeEntity;
   }
 
   public EmployeeEntity toDomain(EmployeeInput employeeInput, List<String> phoneNumbers,
